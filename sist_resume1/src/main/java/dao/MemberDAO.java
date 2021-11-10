@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import kr.co.sist.dao.GetJdbcTemplate;
+import valueObject.LoginVO;
 import valueObject.MemberVO;
 import valueObject.UpdatePwdVO;
 
@@ -65,11 +66,13 @@ public class MemberDAO {
 	 * 회원 정보 조회
 	 * @param id
 	 * @param pw
-	 * @return 아이디,비밀번호,이름,이메일,입력일,탈퇴회원여부
+	 * @return 아이디,이름,이메일
 	 * @throws SQLException
 	 */
-	public MemberVO selectAll( String id, String pw ) throws SQLException {
-		MemberVO returnMember=null;
+//		public MemberVO selectAll( String id, String pw ) throws SQLException {
+	public LoginVO selectAll( String id, String pw ) throws SQLException {
+		LoginVO returnMember=null;
+		/* MemberVO returnMember=null; */
 		
 		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
 		
@@ -77,21 +80,31 @@ public class MemberDAO {
 		
 		StringBuilder selectMember=new StringBuilder();
 		selectMember
-		.append("	select *	")
+		.append("	select id, name, email	")
 		.append("	from users	")
 		.append("	where id=? and password=? ");
 		returnMember=jt.queryForObject(selectMember.toString(), new Object[] { id, pw }, 
-				new RowMapper<MemberVO>() {
-					public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException{
-						MemberVO mv=new MemberVO();
-						mv.setId(rs.getString("id"));
-						mv.setPassword(rs.getString("password"));
-						mv.setName(rs.getString("name"));
-						mv.setEmail(rs.getString("email"));
-						mv.setInput_date(rs.getString("input_date"));
-						return mv;
+				new RowMapper<LoginVO>() {
+					public LoginVO mapRow(ResultSet rs, int rowNum) throws SQLException{
+						LoginVO lv=new LoginVO();
+						lv.setId(rs.getString("id"));
+						lv.setName(rs.getString("name"));
+						lv.setEmail(rs.getString("email"));
+						return lv;
 					}//mapRow
 				});
+//		returnMember=jt.queryForObject(selectMember.toString(), new Object[] { id, pw }, 
+//				new RowMapper<MemberVO>() {
+//			public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException{
+//				MemberVO mv=new MemberVO();
+//				mv.setId(rs.getString("id"));
+//				mv.setPassword(rs.getString("password"));
+//				mv.setName(rs.getString("name"));
+//				mv.setEmail(rs.getString("email"));
+//				mv.setInput_date(rs.getString("input_date"));
+//				return mv;
+//			}//mapRow
+//		});
 		
 		gjt.closeAc();
 		
@@ -160,7 +173,7 @@ public class MemberDAO {
 	 * @param id
 	 * @return 비밀번호
 	 */
-	public String selectPw(UpdatePwdVO uVO) throws SQLException {
+	public String selChangePw(String id) throws SQLException {
 		String pw="";
 		
 		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
@@ -172,7 +185,7 @@ public class MemberDAO {
 		.append("	select password	")
 		.append("	from users	")
 		.append("	where id=?	");
-		pw=jt.queryForObject(selectPw.toString(), new Object[] { uVO.getId() }, String.class);
+		pw=jt.queryForObject(selectPw.toString(), new Object[] { id }, String.class);
 		
 		gjt.closeAc();
 		
@@ -185,8 +198,7 @@ public class MemberDAO {
 	 * @return
 	 * @throws DataAccessException
 	 */
-	public int updatePw( UpdatePwdVO uVO ) throws DataAccessException {
-		int cnt=0;
+	public void updatePw( UpdatePwdVO uVO ) throws DataAccessException {
 		
 		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
 		
@@ -197,11 +209,10 @@ public class MemberDAO {
 		.append("	update users	")
 		.append("	set password=?	")
 		.append("	where id=?");
-		cnt=jt.update(updateMember.toString(), uVO.getNew_pass(), uVO.getId());
+		jt.update(updateMember.toString(), uVO.getNew_pass(), uVO.getId());
 		
 		gjt.closeAc();
 		
-		return cnt;
 	}//insertMember
 	
 	/**
@@ -272,6 +283,22 @@ public class MemberDAO {
 		
 		gjt.closeAc();
 	}//deleteMember
+	
+//	/**
+//	 * 회원탈퇴 ( 회원이 탈퇴하면 id외의 정보는 삭제 )
+//	 * @throws SQLException
+//	 */
+//	public void deleteMember(MemberVO mVO) throws SQLException{
+//		
+//		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+//		
+//		JdbcTemplate jt=gjt.getJdbcTemplate();
+//		
+//		String deleteMember="update users set password='-',name='-',email='-',is_leave='y' where id=?";
+//		jt.update(deleteMember, mVO.getId());
+//		
+//		gjt.closeAc();
+//	}//deleteMember
 	
 	/**
 	 * 회원이 선택한 관심분야 얻기
@@ -389,6 +416,7 @@ public class MemberDAO {
 		return list;
 	}//selectAllUser
 	
+	/////////////// inner class : 회원정보를 저장할 목적의 클래스 시작 /////////////////
 	public class SelectMember implements RowMapper<MemberVO>{
 		public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 			MemberVO mv=new MemberVO();

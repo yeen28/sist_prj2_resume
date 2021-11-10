@@ -30,14 +30,11 @@
 </head>
 
 <body>
-<c:if test="${ empty sessionScope.member_name }">
+<c:if test="${ empty sessionScope.member }">
 <c:redirect url="login_page.jsp"/>
 </c:if>
 <%
 String id=(String)session.getAttribute("id");
-/* session에 있는 아이디 */
-/* String id="test";
-pageContext.setAttribute("id", id); */
 %>
 <div id="chang_password_wrap">
 <!-- header -->
@@ -46,7 +43,6 @@ pageContext.setAttribute("id", id); */
 <div id="chang_container">
 <h1>비밀번호 변경</h1>
 
-<!-- 비밀번호 변경이 가능하면 alert로 변경됐다고 보여주고, My프로필 페이지로 이동 -->
 <form name="change_frm" action="../process/change_pw_process.jsp" method="post">
 <div id="container-mid">
 <label>이전 비밀번호</label><br/>

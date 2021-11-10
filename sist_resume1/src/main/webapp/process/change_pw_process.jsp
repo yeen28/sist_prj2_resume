@@ -30,9 +30,9 @@ request.setCharacterEncoding("UTF-8");
 <jsp:useBean id="uVO" class="valueObject.UpdatePwdVO" scope="page"/>
 <jsp:setProperty property="*" name="uVO"/>
 <%
-String beforePw=request.getParameter("before_pass");
-String newPw=request.getParameter("new_pass");
-String newPw2=request.getParameter("new_pass2");
+String beforePw=(DataEncrypt.messageDigest( "MD5", request.getParameter("before_pass") ));
+String newPw=(DataEncrypt.messageDigest( "MD5", request.getParameter("new_pass") ));
+String newPw2=(DataEncrypt.messageDigest( "MD5", request.getParameter("new_pass2") ));
 String msg="비밀번호를 다시 확인해주세요.";
 String url="javascript:history.back()";
 
@@ -57,7 +57,11 @@ location.href="${ url }";
 </c:catch>
 
 <c:if test="${ not empty e }">
-<span style="color:#FF0000">세션에 있는 아이디로 회원정보 찾던 중 문제발생!!</span>
+<script type="text/javascript">
+alter("비밀번호를 틀렸습니다.");
+location.href="javascript:history.back()";
+</script>
+<%-- <span style="color:#FF0000">세션에 있는 아이디로 회원정보 찾던 중 문제발생!!</span> --%>
 </c:if>
 
 </body>
