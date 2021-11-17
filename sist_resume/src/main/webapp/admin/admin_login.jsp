@@ -1,4 +1,4 @@
-<%@page import="admin.LoginDAO"%>
+<%@page import="kr.co.sist.admin.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -83,7 +83,7 @@ $(function () {
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="aVO" class="admin.LoginVO" scope="page"/>
+<jsp:useBean id="aVO" class="kr.co.sist.admin.LoginVO" scope="page"/>
 <jsp:setProperty property="*" name="aVO"/>
 
 <c:catch var="e">

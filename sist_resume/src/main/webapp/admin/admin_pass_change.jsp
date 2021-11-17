@@ -1,4 +1,4 @@
-<%@page import="admin.LoginDAO"%>
+<%@page import="kr.co.sist.admin.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

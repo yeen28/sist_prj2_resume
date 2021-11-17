@@ -1,5 +1,5 @@
-<%@page import="new_notice.NoticeVO"%>
-<%@page import="new_notice.NoticeDAO"%>
+<%@page import="kr.co.sist.notice.NoticeVO"%>
+<%@page import="kr.co.sist.notice.NoticeDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

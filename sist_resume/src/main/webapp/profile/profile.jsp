@@ -1,9 +1,9 @@
 <%@page import="org.springframework.dao.DataAccessException"%>
-<%@page import="profile.ProfileVO"%>
+<%@page import="kr.co.sist.profile.ProfileVO"%>
 <%@page import="dao.MemberDAO"%>
-<%@page import="profile.TechVO"%>
+<%@page import="kr.co.sist.profile.TechVO"%>
 <%@page import="java.util.List"%>
-<%@page import="profile.ProfileDAO"%>
+<%@page import="kr.co.sist.profile.ProfileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -1,8 +1,8 @@
-<%@page import="admin.UserDAO"%>
-<%@page import="admin.UserVO"%>
-<%@page import="admin.MainVO"%>
+<%@page import="kr.co.sist.admin.UserDAO"%>
+<%@page import="kr.co.sist.admin.UserVO"%>
+<%@page import="kr.co.sist.admin.MainVO"%>
 <%@page import="java.util.List"%>
-<%@page import="admin.MainDAO"%>
+<%@page import="kr.co.sist.admin.MainDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

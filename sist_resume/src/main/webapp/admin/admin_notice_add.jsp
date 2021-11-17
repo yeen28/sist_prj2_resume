@@ -1,4 +1,4 @@
-<%@page import="admin.NoticeDAO"%>
+<%@page import="kr.co.sist.admin.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="공지사항 추가 페이지"
@@ -8,7 +8,7 @@
 
 <c:if test="${ empty sess_id }">
 <script type="text/javascript">
-location.href="<%= protocol %><%= domain %><%= contextRoot %>/admin/admin_login.jsp";
+location.href="<%=protocol%><%=domain%><%=contextRoot%>/admin/admin_login.jsp";
 </script>
 </c:if>
 
@@ -107,7 +107,7 @@ request.setCharacterEncoding("UTF-8");
 </c:if>
 
 <c:if test="${ not empty param.title }">
-<jsp:useBean id="anVO" class="admin.AddNoticeVO" scope="page"/>
+<jsp:useBean id="anVO" class="kr.co.sist.admin.AddNoticeVO" scope="page"/>
 <jsp:setProperty property="*" name="anVO"/>
 <jsp:setProperty property="id" name="anVO" value="${ sess_id }"/>
 

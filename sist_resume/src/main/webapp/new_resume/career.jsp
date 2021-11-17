@@ -1,7 +1,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="org.springframework.dao.DataAccessException"%>
-<%@page import="new_resume.ResumeDAO"%>
-<%@page import="new_resume.CareerVO"%>
+<%@page import="kr.co.sist.resume.ResumeDAO"%>
+<%@page import="kr.co.sist.resume.CareerVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%

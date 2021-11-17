@@ -1,5 +1,5 @@
-<%@page import="admin.UpdateNoticeVO"%>
-<%@page import="admin.NoticeDAO"%>
+<%@page import="kr.co.sist.admin.UpdateNoticeVO"%>
+<%@page import="kr.co.sist.admin.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="공지사항 수정 페이지"
@@ -9,7 +9,7 @@
 
 <c:if test="${ empty sess_id }">
 <script type="text/javascript">
-location.href="<%= protocol %><%= domain %><%= contextRoot %>/admin/admin_login.jsp";
+location.href="<%=protocol%><%=domain%><%=contextRoot%>/admin/admin_login.jsp";
 </script>
 </c:if>
 
@@ -120,7 +120,7 @@ pageContext.setAttribute("unv", unv);
 </c:if>
 
 <c:if test="${ not empty param.title }">
-<jsp:useBean id="unVO" class="admin.UpdateNoticeVO" scope="page"/>
+<jsp:useBean id="unVO" class="kr.co.sist.admin.UpdateNoticeVO" scope="page"/>
 <jsp:setProperty property="*" name="unVO"/>
 
 <%

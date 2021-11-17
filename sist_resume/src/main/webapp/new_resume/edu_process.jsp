@@ -1,11 +1,11 @@
 <%@page import="org.springframework.dao.DataAccessException"%>
-<%@page import="new_resume.ResumeDAO"%>
+<%@page import="kr.co.sist.resume.ResumeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="eduVO" class="new_resume.EducationVO" scope="page"></jsp:useBean>
+<jsp:useBean id="eduVO" class="kr.co.sist.resume.EducationVO" scope="page"></jsp:useBean>
 <jsp:setProperty property="*" name="eduVO"/>
 <script type="text/javascript">
 <%

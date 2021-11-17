@@ -1,5 +1,5 @@
-<%@page import="new_job_post.job_postVO"%>
-<%@page import="new_job_post.job_postDAO"%>
+<%@page import="kr.co.sist.job_post.job_postVO"%>
+<%@page import="kr.co.sist.job_post.job_postDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8" info="채용공고 목록"%>

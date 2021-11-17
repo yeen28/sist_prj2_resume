@@ -1,5 +1,5 @@
-<%@page import="portfolio.portfolio_writeCRUD"%>
-<%@page import="portfolio.portfolio_writeVO"%>
+<%@page import="kr.co.sist.portfolio.portfolio_writeCRUD"%>
+<%@page import="kr.co.sist.portfolio.portfolio_writeVO"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    

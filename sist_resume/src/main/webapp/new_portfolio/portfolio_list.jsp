@@ -1,6 +1,6 @@
-<%@page import="portfolio.portfolio_listVO"%>
+<%@page import="kr.co.sist.portfolio.portfolio_listVO"%>
 <%@page import="java.util.List"%>
-<%@page import="portfolio.portfolioDAO"%>
+<%@page import="kr.co.sist.portfolio.portfolioDAO"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8" info="포트폴리오 목록"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -40,7 +40,7 @@ function deletePortfolio(idx) {
 
 </head>
 <body>
-<jsp:useBean id="pVO" class="portfolio.portfolio_listVO"/>
+<jsp:useBean id="pVO" class="kr.co.sist.portfolio.portfolio_listVO"/>
 <jsp:setProperty property="id" name="pVO" value="${ id }"/>
 <%
 portfolioDAO pDAO=new portfolioDAO();
@@ -69,7 +69,7 @@ portfolioDAO pDAO=new portfolioDAO();
 	int rowBegin = (nowPage -1)*numPerPage+1;
 	int rowEnd = nowPage * numPerPage;
 	
-List<portfolio.portfolio_listVO> list=pDAO.selectAllportfolio(pVO.getId(), rowBegin, rowEnd);
+List<kr.co.sist.portfolio.portfolio_listVO> list=pDAO.selectAllportfolio(pVO.getId(), rowBegin, rowEnd);
 	
 	pageContext.setAttribute("start", start);
 	pageContext.setAttribute("end", end);

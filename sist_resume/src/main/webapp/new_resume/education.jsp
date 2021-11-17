@@ -1,6 +1,6 @@
 <%@page import="org.springframework.dao.DataAccessException"%>
-<%@page import="new_resume.ResumeDAO"%>
-<%@page import="new_resume.EducationVO"%>
+<%@page import="kr.co.sist.resume.ResumeDAO"%>
+<%@page import="kr.co.sist.resume.EducationVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
