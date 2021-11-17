@@ -1,5 +1,5 @@
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="비밀번호 찾기 처리"
@@ -34,7 +34,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="mVO" class="vo.MemberVO" scope="page"/>
+<jsp:useBean id="mVO" class="kr.co.sist.user.MemberVO" scope="page"/>
 <jsp:setProperty property="*" name="mVO"/>
 
 <%
@@ -55,7 +55,7 @@ for(int i=0; pw.length()<8; i++) {
 pageContext.setAttribute("id", id);
 pageContext.setAttribute("pw", pw);
 %>
-<jsp:useBean id="uVO" class="vo.UpdatePwdVO" scope="page"/>
+<jsp:useBean id="uVO" class="kr.co.sist.user.UpdatePwdVO" scope="page"/>
 <jsp:setProperty property="id" name="uVO" value="${ id }"/>
 <jsp:setProperty property="new_pass" name="uVO" value="${ pw }"/>
 

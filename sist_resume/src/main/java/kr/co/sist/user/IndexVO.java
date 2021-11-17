@@ -1,4 +1,4 @@
-package vo;
+package kr.co.sist.user;
 
 public class IndexVO {
 	private String name, email;

@@ -8,17 +8,24 @@
 	overflow: hidden
 }
 
-body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul {
+.t-label{
+	padding: 0.375rem 0;
+	font-size: 14px;
+	vertical-align: top;
+	color:#5F7F90;
+	line-height: 1.5;
+}
+
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, td, textarea, th, ul {
 	margin: 0;
 	padding: 0
 }
 
-body, button, input, table {
+body, button, input {
 	font-size: 12px;
 	line-height: 16px;
 	color: #202020;
-	font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕",
-		helvetica, "Apple SD Gothic Neo", sans-serif
+	font-family: "Inter", 'NotoSansKR', "Helvetica Neue", Helvetica, Arial, "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji", "Noto Color Emoji";
 }
 
 h1, h2, h3, h4, h5, h6 {

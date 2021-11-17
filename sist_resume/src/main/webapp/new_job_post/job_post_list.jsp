@@ -92,7 +92,7 @@ pageContext.setAttribute("selectJobpost", list);
 			<thead>
 			<tr>
 				<th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">기업명</th>
-				<th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">상세정보</th>
+				<!-- <th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">상세정보</th> -->
 				<th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">경력</th>
 				<th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">주소</th>
 				<th style="font-size: 18px; font-weight: bold; text-align: center; color: #333;">작성일</th>
@@ -101,8 +101,8 @@ pageContext.setAttribute("selectJobpost", list);
 			<tbody>
 			<c:forEach var="jobpost" items="${ selectJobpost }">
 			<tr>
-				<td style="font-size: 16px; text-align: center; color: #333;">${ jobpost.company }</td>
-				<td style="font-size: 16px; text-align: center; color: #333;"><a href="http://localhost/sist_resume/new_job_post/job_post_view.jsp?idx=${ jobpost.idx }">${ jobpost.description }</a></td>
+				<td style="font-size: 16px; text-align: center; color: #333;"><a href="http://localhost/sist_resume/new_job_post/job_post_view.jsp?idx=${ jobpost.idx }">${ jobpost.company }</a></td>
+				<%-- <td style="font-size: 16px; text-align: center; color: #333;">${ jobpost.description }</td> --%>
 				<td style="font-size: 16px; text-align: center; color: #333;">${ jobpost.career }</td>
 				<td style="font-size: 16px; text-align: center; color: #333;">${ jobpost.address }</td>
 				<td style="font-size: 16px; text-align: center; color: #333;">${ jobpost.input_date }</td>

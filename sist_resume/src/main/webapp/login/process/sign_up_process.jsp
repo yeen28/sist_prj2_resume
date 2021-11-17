@@ -1,5 +1,5 @@
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="회원가입 처리"
@@ -26,7 +26,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="mVO" class="vo.MemberVO" scope="page"/>
+<jsp:useBean id="mVO" class="kr.co.sist.user.MemberVO" scope="page"/>
 <jsp:setProperty property="*" name="mVO"/>
 
 <c:catch var="e">

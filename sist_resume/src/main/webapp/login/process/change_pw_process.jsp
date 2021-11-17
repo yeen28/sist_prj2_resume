@@ -1,5 +1,5 @@
-<%@page import="dao.MemberDAO"%>
-<%@page import="vo.MemberVO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberVO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,7 +11,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="uVO" class="vo.UpdatePwdVO" scope="page"/>
+<jsp:useBean id="uVO" class="kr.co.sist.user.UpdatePwdVO" scope="page"/>
 <jsp:setProperty property="*" name="uVO"/>
 
 <c:catch var="e">

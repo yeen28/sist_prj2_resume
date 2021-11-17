@@ -1,8 +1,8 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="vo.MemberVO"%>
+<%@page import="kr.co.sist.user.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="로그인 처리"
@@ -13,7 +13,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="lVO" class="vo.LoginVO" scope="page"/>
+<jsp:useBean id="lVO" class="kr.co.sist.user.LoginVO" scope="page"/>
 <jsp:setProperty property="*" name="lVO"/>
 
 <c:catch var="e">

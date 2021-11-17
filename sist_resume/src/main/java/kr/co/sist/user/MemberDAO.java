@@ -1,4 +1,4 @@
-package dao;
+package kr.co.sist.user;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import kr.co.sist.dao.GetJdbcTemplate;
-import vo.IndexVO;
-import vo.LoginVO;
-import vo.MemberVO;
-import vo.UpdatePwdVO;
 
 public class MemberDAO {
 

@@ -1,4 +1,4 @@
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
     info="회원가입"

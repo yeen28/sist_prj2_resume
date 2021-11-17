@@ -1,20 +1,23 @@
-<%@page import="vo.LoginVO"%>
-<%@page import="vo.MemberVO"%>
+<%@page import="kr.co.sist.user.LoginVO"%>
+<%@page import="kr.co.sist.user.MemberVO"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	info="메인 페이지"
 %>
 <%@ include file="/common/jsp/common_code.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+session.setAttribute("id", "android123");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title><%=title%></title>
-<link rel="stylesheet" href="<%=protocol%><%=domain%><%=contextRoot%><%=common_css%>/login_common.css" type="text/css" media="all" />
-<link rel="stylesheet" href="<%=protocol%><%=domain%><%=contextRoot%><%= main %>/main_page.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://localhost/sist_resume/common/css/login_common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://localhost/sist_resume/main_index/main_page.css" type="text/css" media="all" />
 
  <!--jQuery CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -37,19 +40,19 @@
       <c:when test="${ empty sessionScope.id }">
       <div id="left_login">
       <div id="account" class="sc_login">
-      <a href="<%=protocol%><%=domain%><%=contextRoot%><%=login%>/login_page.jsp" class="link_login">로그인</a>
+      <a href="http://localhost/sist_resume/login/login_page.jsp" class="link_login">로그인</a>
       <div class="sub_area">
         <div class="look_box">
-        <a href="<%=protocol%><%=domain%><%=contextRoot%><%=login%>/find.jsp" class="link_look">아이디</a>
-<a href="<%=protocol%><%=domain%><%=contextRoot%><%=login%>/find.jsp" class="link_look">비밀번호찾기</a>
+        <a href="http://localhost/sist_resume/login/find.jsp" class="link_look">아이디</a>
+<a href="http://localhost/sist_resume/login/find.jsp" class="link_look">비밀번호찾기</a>
 </div>
-<a href="<%=protocol%><%=domain%><%=contextRoot%><%=login%>/sign_up.jsp" class="link_join">회원가입</a>
+<a href="http://localhost/sist_resume/login/sign_up.jsp" class="link_join">회원가입</a>
 </div>
 </div>
 </div>
 </c:when>
 <c:otherwise>
-<jsp:useBean id="iv" class="vo.IndexVO"/>
+<jsp:useBean id="iv" class="kr.co.sist.user.IndexVO"/>
 <%
 String id=(String)session.getAttribute("id");
 
@@ -66,30 +69,43 @@ pageContext.setAttribute("listUrl", listUrl);
 pageContext.setAttribute("listPhone", listPhone);
 %>
 <div id="user">
-  <h1><%= iv.getName() %></h1>
-  <a href="<%=protocol%><%=domain%><%=contextRoot%>/login/logout.jsp">로그아웃</a>
-  <a href="<%=protocol%><%=domain%><%=contextRoot%>/profile/profile.jsp">마이페이지</a>
-  <br/>
-  <span class="glyphicon glyphicon-earphone" aria-hidden="true">&nbsp;
+  <h3><%= iv.getName() %></h3>
+  <a href="http://localhost/sist_resume/login/logout.jsp">로그아웃</a>
+  <a href="http://localhost/sist_resume/profile/profile.jsp">마이페이지</a>
+  <br/><br/><br/>
+  <table class="table">
+  <tr>
+    <td class="t-label"><span class="glyphicon glyphicon-earphone" aria-hidden="true">전화번호</span></td>
+    <td class="t-label">
   <c:forEach var="phone" items="${ listPhone }">
   <c:out value="${ phone }"/><br/>
   </c:forEach>
-  </span><br/>
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true">&nbsp;<%= iv.getEmail() %></span><br/>
-  <br/>
-  <div style="text-align: left">관심분야&nbsp;-
-  <c:forEach var="sub" items="${ listSub }">
-			<c:out value="${ sub }"/><br/>
-			</c:forEach>
-			</div><br/>
-			<div style="text-align: left">홈페이지&nbsp;-
-			<c:forEach var="url" items="${ listUrl }">
-			<c:out value="${ url }"/><br/>
-			</c:forEach>
-			</div>
-		</div>
-		</c:otherwise>
-		</c:choose>
+	</td>
+  </tr>
+  <tr>
+    <td class="t-label"><span class="glyphicon glyphicon-envelope" aria-hidden="true">이메일</span></td>
+    <td class="t-label"><%= iv.getEmail() %></td>
+  </tr>
+  <tr>
+    <td class="t-label">관심분야</td>
+    <td class="t-label">
+       <c:forEach var="sub" items="${ listSub }">
+		<c:out value="${ sub }"/><br/>
+	   </c:forEach>
+	</td>
+  </tr>
+  <tr>
+    <td class="t-label">홈페이지</td>
+    <td class="t-label">
+       <c:forEach var="url" items="${ listUrl }">
+		<c:out value="${ url }"/><br/>
+	   </c:forEach>
+	</td>
+  </tr>
+  </table>
+</div>
+</c:otherwise>
+</c:choose>
 		<!-- login 밑의 공간 -->
 		<div id="ad"></div>
 		</div>
@@ -113,17 +129,17 @@ pageContext.setAttribute("listPhone", listPhone);
 						<div class="carousel-inner" role="listbox">
 							<div class="item active">
 								<a href="#void">
-									<img src="<%=protocol%><%=domain%><%=contextRoot%><%=common_images%>/carousel1.PNG" alt="first image">
+									<img src="http://localhost/sist_resume/common/images/carousel1.PNG" alt="first image">
 								</a>
 							</div>
 							<div class="item">
 								<a href="#void">
-									<img src="<%=protocol%><%=domain%><%=contextRoot%><%=common_images%>/carousel2.PNG" alt="second image">
+									<img src="http://localhost/sist_resume/common/images/carousel2.PNG" alt="second image">
 								</a>
 							</div>
 							<div class="item">
 								<a href="#void">
-									<img src="<%=protocol%><%=domain%><%=contextRoot%><%=common_images%>/carousel3.PNG" alt="third image">
+									<img src="http://localhost/sist_resume/common/images/carousel3.PNG" alt="third image">
 								</a>
 							</div>
 						</div>
@@ -145,7 +161,7 @@ pageContext.setAttribute("listPhone", listPhone);
 						<span class="subtitle_text">유튜브 추천</span>
 					</div>
 					<div>
-						<iframe width="1000" height="563"
+						<iframe width="500" height="281"
 							src="https://www.youtube.com/embed/ThGbP9wgkz8"
 							title="YouTube video player" frameborder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -157,10 +173,10 @@ pageContext.setAttribute("listPhone", listPhone);
 				<div id="bottom">
 					<div class="subtitle">
 						<span class="subtitle_text">공지사항</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="<%= protocol %><%= domain %><%= contextRoot %>/notice/notice_a.jsp"><span id="moreView">더보기</span></a>
+						<a href="http://localhost/sist_resume/notice/notice_a.jsp"><span id="moreView">더보기</span></a>
 					</div>
 					<ul id="notice">
-						<li><a href="<%= protocol %><%= domain %><%= contextRoot %>/notice/notice_a.jsp">공지입니다.</a></li>
+						<li><a href="http://localhost/sist_resume/notice/notice_a.jsp">공지입니다.</a></li>
 					</ul>
 				</div>
 			</div>

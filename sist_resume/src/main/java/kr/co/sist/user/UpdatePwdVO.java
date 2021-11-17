@@ -1,4 +1,4 @@
-package vo;
+package kr.co.sist.user;
 
 public class UpdatePwdVO {
 	private String id, before_pass, new_pass;

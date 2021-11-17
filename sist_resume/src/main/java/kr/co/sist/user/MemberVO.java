@@ -1,4 +1,4 @@
-package vo;
+package kr.co.sist.user;
 
 public class MemberVO {
 	private String id, password, name, email, input_date;

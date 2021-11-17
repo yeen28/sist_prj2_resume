@@ -109,7 +109,7 @@ pageContext.setAttribute("portfolioData", list);
 					<c:forEach var="portfolio" items="${ portfolioData }">
 						<tr>
 							<td style="font-size: 18px; text-align: center; color: #333"><c:out value="${ portfolio.idx }"/></td>
-							<td style="font-size: 18px; text-align: center; color: #333"><c:out value="${ portfolio.proj_title }"/></td>
+							<td style="font-size: 18px; text-align: center; color: #333"><a href="http://localhost/sist_resume/new_portfolio/portfolio_detail.jsp?idx=${ portfolio.idx }"><c:out value="${ portfolio.proj_title }"/></a></td>
 							<td><input class="deleteBtn" type="button" value="삭제" onclick="deletePortfolio(${portfolio.idx})"></td>
 						</tr> 
 					</c:forEach>

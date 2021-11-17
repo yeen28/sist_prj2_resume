@@ -1,6 +1,6 @@
 <%@page import="org.springframework.dao.DataAccessException"%>
 <%@page import="kr.co.sist.profile.ProfileVO"%>
-<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
 <%@page import="kr.co.sist.profile.TechVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.sist.profile.ProfileDAO"%>
