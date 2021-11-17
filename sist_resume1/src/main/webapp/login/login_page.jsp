@@ -26,7 +26,7 @@
 <jsp:include page="/headerfooter/header.jsp"/>
 
 <div id="container">
-	<form class="form-signin" action="../process/login_process.jsp" method="post">
+	<form class="form-signin" action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/login_process.jsp" method="post">
         <h2 id="signin-heading"><strong>로그인</strong></h2>
         <label>아이디</label>
         <input type="text" id="inputId" name="id" class="form-control" placeholder="아이디" required autofocus>

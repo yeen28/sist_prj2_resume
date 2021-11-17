@@ -1,3 +1,4 @@
+<%@page import="valueObject.LoginVO"%>
 <%@page import="valueObject.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.MemberDAO"%>
@@ -53,8 +54,8 @@
 </c:when>
 <c:otherwise>
 <%
-MemberVO mVO=(MemberVO)session.getAttribute("member");
-String id=mVO.getId();
+LoginVO lVO=(LoginVO)session.getAttribute("member");
+String id=lVO.getId();
 				
 MemberDAO mDAO=new MemberDAO();
 List<String> listSub=mDAO.selectSub(id);

@@ -1,4 +1,4 @@
-<%@page import="valueObject.MemberVO"%>
+<%@page import="valueObject.LoginVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="회원탈퇴 페이지"
@@ -40,10 +40,8 @@ function deleteMember() {
 <c:redirect url="login_page.jsp"/>
 </c:if>
 <%
-/* String name=(String)session.getAttribute("member_name");
-String id=(String)session.getAttribute("member_id"); */
-String name=((MemberVO)session.getAttribute("member")).getName();
-String id=((MemberVO)session.getAttribute("member")).getId();
+String name=((LoginVO)session.getAttribute("member")).getName();
+String id=((LoginVO)session.getAttribute("member")).getId();
 %>
 <div id="wrap">
 <!-- header -->
@@ -77,7 +75,7 @@ String id=((MemberVO)session.getAttribute("member")).getId();
   탈퇴 후에는 게시글을 임의로 삭제해드릴 수 없습니다.</p>
 </div>
 
-<form action="../process/leave_process.jsp" method="post" id="leaveFrm" name="leaveFrm">
+<form action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/leave_process.jsp" method="post" id="leaveFrm" name="leaveFrm">
 <div id=bottom>
 <table class="table">
 <tr>

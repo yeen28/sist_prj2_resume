@@ -30,7 +30,7 @@
 </div>
 
 <div class="container-mid">
-<form class="form-signin" action="../process/find_id_process.jsp" method="post">
+<form class="form-signin" action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/find_id_process.jsp" method="post">
 <div id="left">
 <table>
 	<tr><td><span>아이디 찾기<br/>회원님의 이름과 이메일을 입력해주세요.</span></td></tr>
@@ -41,7 +41,7 @@
 </div>
 </form>
 
-<form action="../process/find_pass_process.jsp" method="post">
+<form action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/find_pass_process.jsp" method="post">
 <div id="right">
 <table>
 	<tr><td><span>비밀번호 찾기<br/>회원님의 이름과 아이디, 이메일을 입력해주세요.</span></td></tr>
