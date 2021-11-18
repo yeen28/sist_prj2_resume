@@ -5,6 +5,10 @@
     pageEncoding="UTF-8" info="포트폴리오 목록"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
+<!-- 세션에 로그인 정보 없을때 -->
+<c:if test="${ empty sessionScope.id }">
+	<c:redirect url="http://localhost/sist_resume/login/login_page.jsp"></c:redirect>
+</c:if>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
