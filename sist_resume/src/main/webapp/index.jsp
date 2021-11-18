@@ -7,6 +7,7 @@
 %>
 <%@ include file="/common/jsp/common_code.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <% session.setAttribute("id", "android123"); %> --%>
 <!DOCTYPE html>
 <html>
 <head>

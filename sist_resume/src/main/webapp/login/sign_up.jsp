@@ -10,7 +10,6 @@
 <head>
 <meta charset="utf-8">
 <title><%= title %></title>
-<link rel="stylesheet" href="<%= protocol %><%= domain %><%= contextRoot %><%= common_css %>/sign_up.css"/>
 
 <!--jQuery CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -18,6 +17,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="http://localhost/sist_resume/common/css/sign_up.css"/>
 
 <script type="text/javascript">
 $(function() {
@@ -96,7 +97,7 @@ $(function() {
 <jsp:include page="/headerfooter/header.jsp"></jsp:include>
 
 <div id="container">
-      <h2 class="sign-title"><strong>회원가입</strong></h2>
+      <h2 class="sign-title"><img src="http://localhost/sist_resume/common/images/icons/sign_up.PNG" width="50px"/>&nbsp;<strong>회원가입</strong></h2>
         <form role="form" class="new_user" id="new_user" name="new_user" action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/sign_up_process.jsp" accept-charset="UTF-8" method="post">
         <div>
         </div>

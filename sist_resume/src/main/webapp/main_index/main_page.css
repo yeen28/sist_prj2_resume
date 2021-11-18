@@ -1,14 +1,13 @@
 @charset "UTF-8";
 
 #user{
-	width: 300px;
+	width: 425px;
 	text-align: left;
 	padding: 30px;
 	border: 1px solid #dfdfdf;
 }
-
 #container {
-	width: 1360px;
+	width: 1500px;
 	margin: 50px auto;
 	height: 1300px;
 }
