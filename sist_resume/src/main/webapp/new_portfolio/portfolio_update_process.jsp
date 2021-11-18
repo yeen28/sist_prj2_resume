@@ -1,7 +1,8 @@
 <%@page import="kr.co.sist.portfolio.portfolio_writeCRUD"%>
 <%@page import="kr.co.sist.portfolio.portfolio_writeVO"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    info="포트폴리오 수정"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>포트폴리오</title>
-<link rel="stylesheet" type="text/css" href="http://localhost/jsp_prj/common/css/main_v20211012.css"/>
 
 <style type="text/css">
 .go_portfolio_list{ margin-top: 100px; margin-bottom: 100px; text-align: center; }
@@ -29,37 +29,21 @@
 </script>
 </head>
 <body>
-
-<!-- header -->
-<jsp:include page="/headerfooter/header.jsp"></jsp:include>
-
 <%
 request.setCharacterEncoding("UTF-8");
-
-String proj_title=request.getParameter("proj_title");
-String date_year=request.getParameter("date_year");
-String team=request.getParameter("team");
-String description=request.getParameter("description");
-String id=request.getParameter("id");
-String url=request.getParameter("url_link");
-
-portfolio_writeVO pwVO=new portfolio_writeVO();
-pwVO.setProj_title(proj_title);
-pwVO.setDate_year(date_year);
-pwVO.setTeam(team);
-pwVO.setDescription(description);
-pwVO.setId(id);
-pwVO.setUrl_link(url);
 %>
+<!-- header -->
+<jsp:include page="/headerfooter/header.jsp"></jsp:include>
+<jsp:useBean id="pv" class="kr.co.sist.portfolio.portfolio_writeVO"/>
+<jsp:setProperty property="*" name="pv"/>
 <div class="container">
 	<div class="go_portfolio_list">
 		<c:catch var="e">
 		<%
 		portfolio_writeCRUD pbc=new portfolio_writeCRUD();
-		int cnt=pbc.insertPortfolio(pwVO);
-		pageContext.setAttribute("cnt", cnt);
+		pbc.updatePortfolio(pv);
 		%>
-		<span style="font-size: 30px; color: #333; font-weight: bold;">포트폴리오 추가 성공</span><br/>
+		<span style="font-size: 30px; color: #333; font-weight: bold;">포트폴리오 수정 성공</span><br/>
 		<div class="go">
 			<span style="font-size: 28px; color: #333;">
 				<a href="http://localhost/sist_resume/new_portfolio/portfolio_list.jsp">포트폴리오 목록</a>조회하기
@@ -68,7 +52,7 @@ pwVO.setUrl_link(url);
 		</c:catch>
 		<c:if test="${ not empty e }">
 			<c:out value="${ param.proj_title }"/>의 포트폴리오 정보를 입력 중 문제 발생.<br/>
-			<%-- <c:out value="${ e }"></c:out> --%>
+			<%-- ${ e } --%>
 		</c:if>
 	</div>
 </div>

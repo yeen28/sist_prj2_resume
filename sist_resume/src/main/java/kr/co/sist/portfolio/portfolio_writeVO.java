@@ -2,7 +2,7 @@ package kr.co.sist.portfolio;
 
 public class portfolio_writeVO {
 	private int idx;
-	private String proj_title, date_year, team, description, id;
+	private String proj_title, date_year, team, description, url_link, id;
 	
 	public portfolio_writeVO() {
 		
@@ -52,6 +52,14 @@ public class portfolio_writeVO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getUrl_link() {
+		return url_link;
+	}
+
+	public void setUrl_link(String url_link) {
+		this.url_link = url_link;
 	}	
 	
 }//class

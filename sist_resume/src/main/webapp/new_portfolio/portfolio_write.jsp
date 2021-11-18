@@ -28,6 +28,7 @@
 #selectYear{ width: 200px; }
 #team{ position: absolute; top: 180px; left: 50px; }
 #selectTeam{ width: 250px; }
+#url{ position: absolute; top: 180px; left: 350px; width: 450px; }
 #contents{ position: absolute; top: 260px; left: 50px; }
 #textarea{ width: 750px; height: 130px; }
 .cancel{ position: absolute; top: 440px; left: 350px; font-size: 15px; font-weight: bold; background-color: #D8D8D8; color: #333;
@@ -101,9 +102,10 @@ $(function(){
   				<option>개인</option>
 			</select>
 		</div>
-		<!-- <div id="url">
-		<input type="text" name="url" placeholder="https://"/>
-		</div> -->
+		<div id="url">
+		<label>URL<span style="font-size: 10px">(optional)</span></label>
+		<input type="text" name="url_link" placeholder="https://" class="form-control"/>
+		</div>
 		<div id="contents">
 			<label>상세 업무 및 성과<span style="font-size: 10px">(optional)</span></label>
 			<textarea id="textarea" class="form-control" rows="3" placeholder="입력" name="description"></textarea>
