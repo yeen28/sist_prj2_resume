@@ -154,92 +154,55 @@ div{
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	 /* $(function(){
-	
-		$("#addSave").click(function(){
-			
-			let upfile=$("#upfile").val();
-			
-			//업로드가능 확장자의 유효성검증.
-			//서버에서 실행되는 언어와 같은 소스코드는 업로드하지 못하도록 막아야 함.
-			//이미지파일(jpg, png, gif, bmp)만 업로드할 수 있도록 검증.
-			
-			let fileExt = ["jpg","png","gif","bmp"];
-			let fileFlag = false;
-			
-			let ext = (upfile.substring(upfile.lastIndexOf(".")+1)).toLowerCase();
-			for( var i=0; i<fileExt.length; i++ ){
-				if( ext == fileExt[i] ){
-					fileFlag = true;
-					break;
-				}//end if
-			}//end for
-			
-			if( !fileFlag ){
-				alert("업로드 가능 확장자가 아닙니다.");
-				return;
-			}//end if
-			
-			$("#frm").submit();
-			
-		});//click
-		
-	});//ready */
-	
+
 function insert() {
-			let upfile=$("#upfile").val();
+	let upfile=$("#upfile").val();
 			
-			//업로드가능 확장자의 유효성검증.
-			//서버에서 실행되는 언어와 같은 소스코드는 업로드하지 못하도록 막아야 함.
-			//이미지파일(jpg, png, gif, bmp)만 업로드할 수 있도록 검증.
+	//업로드가능 확장자의 유효성검증.
+	//서버에서 실행되는 언어와 같은 소스코드는 업로드하지 못하도록 막아야 함.
+	//이미지파일(jpg, png, gif, bmp)만 업로드할 수 있도록 검증.
 			
-			let fileExt = ["jpg","png","gif","bmp"];
-			let fileFlag = false;
+	let fileExt = ["jpg","png","gif","bmp"];
+	let fileFlag = false;
 			
-			let ext = (upfile.substring(upfile.lastIndexOf(".")+1)).toLowerCase();
-			for( var i=0; i<fileExt.length; i++ ){
-				if( ext == fileExt[i] ){
-					fileFlag = true;
-					break;
-				}//end if
-			}//end for
+	let ext = (upfile.substring(upfile.lastIndexOf(".")+1)).toLowerCase();
+	for( var i=0; i<fileExt.length; i++ ){
+		if( ext == fileExt[i] ){
+			fileFlag = true;
+			break;
+		}//end if
+	}//end for
 			
-			if( !fileFlag ){
-				alert("업로드 가능 확장자가 아닙니다.");
-				return;
-			}//end if
+	if( !fileFlag ){
+		alert("업로드 가능 확장자가 아닙니다.");
+		return;
+	}//end if
 			
-			$("#frm").submit();
+	$("#frm").submit();
 }//insert	
 
-	// 이미지 업로드한 거 보이기
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#profimg').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+// 이미지 업로드한 거 보이기
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$('#profimg').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
 	
 function update(id) {
-	//업데이트
-	//function updateData( id, i ){
-		if( confirm(id+"님의 회원정보를 변경하시겠습니까?") ){
-			
-			//hidden form 에 존재하는 Control에 값 설정
-			$("#update_phone").val($("#phone").val());
-			$("#update_description").val($("#description").val());
-			$("#update_url").val($("#url").val());
-			$("#update_img").val($("#img").val());
-			$("#update_tech_idx").val($("#tech_idx").val());
-			
-			$("#hiddenFrm").submit();
-			
-		}//end if
-		
-	//};//updateData
+	if( confirm(id+"님의 회원정보를 변경하시겠습니까?") ){
+		//hidden form 에 존재하는 Control에 값 설정
+		$("#update_phone").val($("#phone").val());
+		$("#update_description").val($("#description").val());
+		$("#update_url").val($("#url").val());
+		$("#update_img").val($("#img").val());
+		$("#update_tech_idx").val($("#tech_idx").val());
+				
+		$("#hiddenFrm").submit();
+	}//end if
 }//update	
 </script>
 </head>
@@ -268,13 +231,13 @@ pageContext.setAttribute("pv", pv);
 }
 pageContext.setAttribute("name", name);
 %>
-<div id="wrap">
 <!-- header -->
 <jsp:include page="/headerfooter/header.jsp"></jsp:include>
+<div id="wrap">
 	<div id="all">
 	
 	<form id="frm" method="post" action="insert_proc.jsp">
-		
+	
 	<div id="profile"><br/>
 			<div id="passCh"><a href="http://localhost/sist_resume/login/change_password.jsp">비밀번호 변경</a></div>
 			<div id="leave"><a href="http://localhost/sist_resume/login/leave.jsp">회원탈퇴</a></div>
@@ -288,7 +251,7 @@ pageContext.setAttribute("name", name);
 						<%} else { %>
 						<input type="file" name="img" id="upfile" onchange="readURL(this);"/><br/><br/>
 						<%}//end else %>
-			</div>
+	</div>
 
 	<div id="id1">
 
@@ -406,58 +369,5 @@ pageContext.setAttribute("name", name);
 	<!-- footer -->
 <jsp:include page="/headerfooter/footer.jsp"></jsp:include>
 </div>
-	<%-- <%
-	request.setCharacterEncoding("UTF-8");
-	%>
-	<jsp:useBean id="pVO" class="profile.ProfileVO" scope="page"/>
-	<jsp:setProperty property="*" name="pVO"/>
-
-	<c:catch var="e">
-	<%
-	//DB작업
-	ProfileDAO pDAO = new ProfileDAO();
-	pDAO.insertProfile(pVO);//추가성공 예외
-	%>
-	<script type="text/javascript">
-	alert("회원 정보를 수정하였습니다.");
-	</script>
-	<%
-	pageContext.setAttribute("cnt", pDAO.updateProfile(pVO));
-	
-	session.setAttribute("gender", pVO.getGender());
-	session.setAttribute("phone", pVO.getPhone());
-	session.setAttribute("description", pVO.getDescription());
-	session.setAttribute("url", pVO.getUrl());
-	session.setAttribute("img", pVO.getImg());
-	session.setAttribute("tech_idx", pVO.getTech_idx());
-	
-	String gender = (String)session.getAttribute("gender");
-	String phone = (String)session.getAttribute("phone");
-	String description = (String)session.getAttribute("description");
-	String url = (String)session.getAttribute("url");
-	String img = (String)session.getAttribute("img");
-	Integer tech_idx = (Integer)session.getAttribute("tech_idx");
-	%>
-	<c:choose>
-		<c:when test="${ cnt eq 0 }">
-			<c:out value="${ param.id }"/>님은 존재하지 않습니다.
-		</c:when>
-		<c:otherwise>
-			<c:out value="${ param.phone }"/>회원 정보를 변경하였습니다.
-			<c:out value="${ param.description }"/>회원 정보를 변경하였습니다.
-			<c:out value="${ param.url }"/>회원 정보를 변경하였습니다.
-			<c:out value="${ param.img }"/>회원 정보를 변경하였습니다.
-			<c:out value="${ param.tech_idx }"/>회원 정보를 변경하였습니다.
-		</c:otherwise>
-	</c:choose>
-	<br/>
-
-	</c:catch>
-	<c:if test="${ not empty e }">
-	<c:out value="${e}"/><br/>
-	죄송합니다. 회원정보가 입력되지 않았습니다.
-	잠시 후 다시 시도해주세요.
-	</c:if> --%>
-		
 </body>
 </html>

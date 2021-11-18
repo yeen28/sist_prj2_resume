@@ -13,25 +13,25 @@ try {
 	pageContext.setAttribute("eduVO", eduVO);
 } catch (DataAccessException e) {
 	System.out.println("저장된 학력이 1건이 아닙니다.");
+	e.printStackTrace();
 }
 
 %>
 
 <div class="row resume_card_header">
-	<div class="resume_card_left col-md-4">
-		<h4 class="card_title">학력</h4>
+	<div class="resume_card_left col-md-3">
+		<h3 class="card_title">학력</h3>
 	</div>
-	<div class="resume_card_right col-md-2 col-md-offset-6">
+	<div class="resume_card_middle col-md-3 col-md-offset-1">
+		<h4>${ eduVO.univ } ${ eduVO.major }</h4>
+	</div>
+	<div class="resume_card_right col-md-2 col-md-offset-3">
 		<button class="btn btn-primary btn-lg" type="button"
 			data-toggle="collapse" data-target="#education" aria-expanded="false"
 			aria-controls="education">+ 상세</button>
 	</div>
 </div>
 <div>
-	<div class="selected_data">
-		<h4>${ eduVO.univ }</h4>
-		<h5>${ eduVO.major }</h5>
-	</div>
 	<div class="collapse" id="education">
 		<div class="well resume_form">
 			<form action="edu_process.jsp" id="edu_frm" method="post">
@@ -48,12 +48,12 @@ try {
 						class="form-control" id="edu_degree" placeholder="ex) 학사" name="degree" value="${ eduVO.degree }">
 				</div>
 				<div class="form-group">
-					<label for="eedu_nt">* 입학년도</label>
-					<input type="month" class="form-control" id="ent" name="ent" value="${ eduVO.ent }">
+					<label for="edu_ent">* 입학년도</label>
+					<input type="month" class="form-control" id="edu_ent" name="ent" value="${ eduVO.ent }">
 				</div>
 				<div class="form-group">
 					<label for="edu_grad">졸업(예정) 년월</label>
-					<input type="month" class="form-control" id="grad" name="grad" value="${ eduVO.grad}" >
+					<input type="month" class="form-control" id="edu_grad" name="grad" value="${ eduVO.grad}" >
 				</div>
 				<div class="form-group">
 					<label for="edu_score">내 학점 / 최대학점</label>
@@ -64,7 +64,7 @@ try {
 						</div>
 						<div class="col-xs-2">
 							<input type="number" class="form-control" placeholder="4.5"
-								step="0.1" id="score" name="max_score" value="${ eduVO.max_score }">
+								step="0.1" id="max_score" name="max_score" value="${ eduVO.max_score }">
 						</div>
 					</div>
 				</div>
@@ -73,7 +73,7 @@ try {
 					<textarea class="form-control" id="edu_description" rows="7"
 						placeholder="기타 학력사항을 작성해주세요." name="description">${ eduVO.description }</textarea>
 				</div>
-				<input type="hidden" name="id" value="<%= id%>">
+				<input type="hidden" name="id" value="<%= id %>">
 				<input type="hidden" name="idx" value="${ eduVO.idx}">
 			</form>
 		</div>

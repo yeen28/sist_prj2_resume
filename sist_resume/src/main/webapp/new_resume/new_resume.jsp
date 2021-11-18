@@ -204,19 +204,19 @@ $(function() {
 							</h1>
 						</div>
 						<div>
-							<img src="${ pVO.img }" class="img-responsive img-circle"
+							<img src="${ pVO.img }" class="img-responsive img-circle prof_img"
 								onerror="this.src='http://localhost/sist_resume/common/images/defalt.jpg'">
 						</div>
 						<div class="resume_profile_info">
-							<strong>${ pVO.phone }</strong>
+							<strong>phone: ${ pVO.phone }</strong>
 							<br>
-							<strong>${ iVO.email }</strong>
+							<strong>email: ${ iVO.email }</strong>
 						</div>
 						<div class="resume_profile_info">
-							<strong></strong>
+							<strong>homepage: ${ pVO.url }</strong>
 						</div>
 						<div class="resume_profile_info">
-							<strong>${ pVO.url }</strong>
+							<strong>${ pVO.description }</strong>
 						</div>
 						<div class="edit_prof">
 							<a href="http://localhost/sist_resume/profile/profile.jsp">내 프로필 수정</a>

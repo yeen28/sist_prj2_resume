@@ -50,7 +50,7 @@ public class ResumeDAO {
 
 		String updateCareer;
 		if (cVO.getIdx() == 0) {
-			updateCareer = "insert into career values(career_seq.nextval, ?, ?, ?, ?, ?, ?)";
+			updateCareer = "insert into career (idx, company, task, period, description, tech, id) values(career_seq.nextval, ?, ?, ?, ?, ?, ?)";
 			count = jt.update(updateCareer, cVO.getCompany(), cVO.getTask(), cVO.getPeriod(), cVO.getDescription(),
 					cVO.getTech(), cVO.getId());
 		} else {
@@ -85,7 +85,7 @@ public class ResumeDAO {
 				eVO.setDegree(rs.getString("degree"));
 				eVO.setEnt(rs.getString("ent"));
 				eVO.setGrad(rs.getNString("grad"));
-				eVO.setDegree(rs.getNString("description"));
+				eVO.setDescription(rs.getString("description"));
 
 				return eVO;
 			}
@@ -101,7 +101,7 @@ public class ResumeDAO {
 
 		String updateEdu;
 		if (eVO.getIdx() == 0) {
-			updateEdu = "insert into education values(?, ?, ?, ?, ?, ?, ?, ?, ?, edu_seq.nextval)";
+			updateEdu = "insert into education (univ, major, degree, ent, grad, score, max_score, description, id, idx) values(?, ?, ?, ?, ?, ?, ?, ?, ?, edu_seq.nextval)";
 			count = jt.update(updateEdu, eVO.getUniv(), eVO.getMajor(), eVO.getDegree(), eVO.getEnt(), eVO.getGrad(),
 					eVO.getScore(), eVO.getMax_score(), eVO.getDescription(), eVO.getId());
 		} else {
@@ -149,7 +149,7 @@ public class ResumeDAO {
 
 		String updateCert;
 		if (cVO.getIdx() == 0) {
-			updateCert = "insert into certificate values(cert_seq.nextval, ?, ?, ?, ?)";
+			updateCert = "insert into certificate(idx, title, get_date, description, id) values(cert_seq.nextval, ?, ?, ?, ?)";
 			count = jt.update(updateCert, cVO.getTitle(), cVO.getGet_date(), cVO.getDescription(), cVO.getId());
 		} else {
 			updateCert = "update certificate set title=?, get_date=?, description=? where idx=?";
@@ -196,7 +196,7 @@ public class ResumeDAO {
 
 		String updateLang;
 		if (lVO.getIdx() == 0) {
-			updateLang = "insert into language values(lang_seq.nextval, ?, ?, ?, ?)";
+			updateLang = "insert into language(idx, lang, exam_title, score, id) values(lang_seq.nextval, ?, ?, ?, ?)";
 			count = jt.update(updateLang, lVO.getLang(), lVO.getExam_title(), lVO.getScore(), lVO.getId());
 		} else {
 			updateLang = "update language set lang=?, exam_title=?, score=? where idx=?";

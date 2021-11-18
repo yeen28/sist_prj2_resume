@@ -18,21 +18,19 @@ try {
 %>
 
 <div class="row resume_card_header">
-	<div class="resume_card_left col-md-4">
-		<h4 class="card_title">수상 / 자격증</h4>
+	<div class="resume_card_left col-md-3">
+		<h3 class="card_title">수상 / 자격증</h3>
 	</div>
-	<div class="resume_card_right col-md-2 col-md-offset-6">
+	<div class="resume_card_middle col-md-3 col-md-offset-1">
+		<h4>${ certVO.title }</h4>
+	</div>
+	<div class="resume_card_right col-md-2 col-md-offset-3">
 		<button class="btn btn-primary btn-lg" type="button"
 			data-toggle="collapse" data-target="#certificate"
 			aria-expanded="false" aria-controls="certificate">+ 상세</button>
 	</div>
 </div>
 <div>
-
-	<div class="selected_data">
-		<h4>${ certVO.title }</h4>
-	</div>
-
 	<div class="collapse" id="certificate">
 		<div class="well resume_form">
 

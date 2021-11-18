@@ -18,20 +18,19 @@ try {
 %>
 
 <div class="row resume_card_header">
-	<div class="resume_card_left col-md-4">
-		<h4 class="card_title">업무 경험</h4>
+	<div class="resume_card_left col-md-3">
+		<h3 class="card_title">업무 경험</h3>
 	</div>
-	<div class="resume_card_right col-md-2 col-md-offset-6">
+	<div class="resume_card_middle col-md-3 col-md-offset-1">
+		<h4>${ careerVO.company } ${ careerVO.period }</h4>
+	</div>
+	<div class="resume_card_right col-md-2 col-md-offset-3">
 		<button class="btn btn-primary btn-lg" type="button"
 			data-toggle="collapse" data-target="#career" aria-expanded="false"
 			aria-controls="career">+ 상세</button>
 	</div>
 </div>
 <div>
-	<div class="selected_data">
-		<h4 id="sel_comp_name">${ careerVO.company }</h4>
-		<h5 id="sel_work_period">${ careerVO.period }</h5>
-	</div>
 	<div class="collapse" id="career">
 		<div class="well resume_form">
 			<form id="career_frm" action="career_process.jsp" method="post">
