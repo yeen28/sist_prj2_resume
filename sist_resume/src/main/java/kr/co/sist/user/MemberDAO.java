@@ -31,24 +31,6 @@ public class MemberDAO {
 	}//insertMember
 	
 	/**
-	 * 	프로필 정보  insert
-	 * @param id
-	 * @throws DataAccessException
-	 */
-//	public void insertProfile(String id) throws DataAccessException {
-//			
-//			GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
-//			JdbcTemplate jt = gjt.getJdbcTemplate();
-//			
-//			String insertProfile = 
-//					"insert into profile(idx,gender,phone,description,url,img,input_date,tech_idx,id) values(profile_seq.nextval,null,null,null,null,null,sysdate,null,?)";
-//			jt.update(insertProfile, id);
-//			//4. Spring Container 닫기
-//			gjt.closeAc();
-//			
-//		}//insertProfile
-	
-	/**
 	 * 로그인 처리
 	 * @param id
 	 * @param pw
@@ -73,41 +55,6 @@ public class MemberDAO {
 		
 		return result;
 	}//selectLogin
-	
-	/**
-	 * 회원 정보 조회
-	 * @param id
-	 * @param pw
-	 * @return 아이디,이름,이메일
-	 * @throws SQLException
-	 */
-//	public LoginVO selectAll( String id, String pw ) throws SQLException {
-//		LoginVO returnMember=null;
-//		
-//		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
-//		
-//		JdbcTemplate jt=gjt.getJdbcTemplate();
-//		
-//		StringBuilder selectMember=new StringBuilder();
-//		selectMember
-//		.append("	select id, name, email	")
-//		.append("	from users	")
-//		.append("	where id=? and password=? ");
-//		returnMember=jt.queryForObject(selectMember.toString(), new Object[] { id, pw }, 
-//				new RowMapper<LoginVO>() {
-//					public LoginVO mapRow(ResultSet rs, int rowNum) throws SQLException{
-//						LoginVO lv=new LoginVO();
-//						lv.setId(rs.getString("id"));
-//						lv.setName(rs.getString("name"));
-//						lv.setEmail(rs.getString("email"));
-//						return lv;
-//					}//mapRow
-//				});
-//		
-//		gjt.closeAc();
-//		
-//		return returnMember;
-//	}//selectLogin
 	
 	/**
 	 * 아이디 찾기
@@ -415,6 +362,38 @@ public class MemberDAO {
 		return cnt;
 	}//cntPortfolio
 	
+	/**
+	 * 공지사항 최근 7개만 얻기
+	 * @return 
+	 * @throws SQLException
+	 */
+	public List<String> selNoticeTitle() throws SQLException{
+		List<String> title=null;
+		
+		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+		
+		JdbcTemplate jt=gjt.getJdbcTemplate();
+		
+		StringBuilder select=new StringBuilder();
+		select
+		.append("	select title	")
+		.append("	from (select rownum r_num, title	")
+		.append("	from (select title	")
+		.append("	from notice	")
+		.append("	order by idx desc))	")
+		.append("	where r_num between 1 and 7	");
+		title=jt.query(select.toString(), new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("title");
+			}
+		});
+		
+		gjt.closeAc();
+		
+		return title;
+	}//cntPortfolio
+
 	
 	public List<MemberVO> selectAllUser(String pw) throws SQLException{
 		List<MemberVO> list=null;

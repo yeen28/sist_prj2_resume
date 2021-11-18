@@ -13,8 +13,6 @@
 <head>
 <meta charset="UTF-8">
 <title><%=title%></title>
-<link rel="stylesheet" href="http://localhost/sist_resume/common/css/login_common.css" type="text/css" media="all" />
-<link rel="stylesheet" href="http://localhost/sist_resume/main_index/main_page.css" type="text/css" media="all" />
 
  <!--jQuery CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -22,9 +20,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="http://localhost/sist_resume/common/css/login_common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://localhost/sist_resume/main_index/main_page.css" type="text/css" media="all" />
+
 </head>
 
 <body>
+<%
+MemberDAO mDAO=new MemberDAO();
+List<String> listNotice=mDAO.selNoticeTitle();
+pageContext.setAttribute("listNotice", listNotice);
+%>
 <div id="main_wrap">
   <!-- header -->
   <jsp:include page="/headerfooter/header.jsp"/>
@@ -53,7 +60,6 @@
 <%
 String id=(String)session.getAttribute("id");
 
-MemberDAO mDAO=new MemberDAO();
 List<String> listSub=mDAO.selectSub(id);
 List<String> listUrl=mDAO.selectUrl(id);
 List<String> listPhone=mDAO.selectPhone(id);
@@ -170,10 +176,12 @@ pageContext.setAttribute("listPhone", listPhone);
 				<div id="bottom">
 					<div class="subtitle">
 						<span class="subtitle_text">공지사항</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="http://localhost/sist_resume/notice/notice_a.jsp"><span id="moreView">더보기</span></a>
+						<a href="http://localhost/sist_resume/new_notice/notice_list.jsp"><span id="moreView">더보기</span></a>
 					</div>
 					<ul id="notice">
-						<li><a href="http://localhost/sist_resume/notice/notice_a.jsp">공지입니다.</a></li>
+					<c:forEach var="notice" items="${ listNotice }">
+						<li><a href="http://localhost/sist_resume/new_notice/notice_list.jsp"><c:out value="${ notice }"/></a></li>
+					</c:forEach>
 					</ul>
 				</div>
 			</div>

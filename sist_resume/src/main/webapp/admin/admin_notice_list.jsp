@@ -5,12 +5,9 @@
     info="공지사항 상세페이지"
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/common/jsp/common_code.jsp" %>
 
 <c:if test="${ empty sess_id }">
-<script type="text/javascript">
-location.href="<%=protocol%><%=domain%><%=contextRoot%>/admin/admin_login.jsp";
-</script>
+<c:redirect url="http://localhost/sist_resume/admin/admin_login.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
