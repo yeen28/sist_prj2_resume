@@ -29,9 +29,9 @@
 	<form class="form-signin" action="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/process/login_process.jsp" method="post">
         <h2 id="signin-heading"><strong>로그인</strong></h2>
         <label>아이디</label>
-        <input type="text" id="inputId" name="id" class="form-control" placeholder="아이디" required autofocus value="kim111">
+        <input type="text" id="inputId" name="id" class="form-control" placeholder="아이디" required autofocus>
 		<label style="margin-top: 10px">비밀번호</label>
-		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호" required value="kim111">
+		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="비밀번호" required>
 		<button class="btn btn-lg btn-block" type="submit">로그인하기</button>
 	</form>
 	

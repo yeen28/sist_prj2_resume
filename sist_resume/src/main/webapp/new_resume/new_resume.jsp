@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-session.setAttribute("id", "android123");
-%>
-<!-- 세션에 이름이 없음 -->
+<!-- 세션에 로그인 정보 없을때 -->
 <c:if test="${ empty sessionScope.id }">
 	<c:redirect url="http://localhost/sist_resume/login/login_page.jsp"></c:redirect>
 </c:if>
 <%
 String id = (String) session.getAttribute("id");
+String userName = (String) session.getAttribute("userName");
 %>
 
 <!DOCTYPE html>
@@ -174,7 +172,7 @@ $(function() {
 					<div class="resume_profile">
 						<div class="resume_profile_info">
 							<h1>
-								이름
+								<%= userName %>
 							</h1>
 						</div>
 						<div>
@@ -183,7 +181,9 @@ $(function() {
 								class="img-responsive img-circle" alt="이미지를 등록하세요">
 						</div>
 						<div class="resume_profile_info">
-							<strong>전화번호 여기에</strong><br> <strong>이메일 여기에</strong>
+							<strong>전화번호 여기에</strong>
+							<br>
+							<strong>이메일 여기에</strong>
 						</div>
 						<div class="resume_profile_info">
 							<strong>선호기술 </strong>

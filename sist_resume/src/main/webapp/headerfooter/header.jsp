@@ -27,7 +27,13 @@ String userName = (String) session.getAttribute("userName");
 					<li><a href="http://localhost/sist_resume/new_portfolio/portfolio_list.jsp">포트폴리오</a></li>
 					<li><a href="http://localhost/sist_resume/new_job_post/job_post_list.jsp">채용공고</a></li>
 					<li><a href="http://localhost/sist_resume/new_notice/notice_list.jsp">공지사항</a></li>
-					<li><a href="http://localhost/sist_resume/profile/profile.jsp">${ userName }님</a></li>
+					<%
+					if(userName != null && !userName.equals("")) {
+						out.print("<li><a href='http://localhost/sist_resume/profile/profile.jsp'>"); 
+						out.print(userName + "'s 프로필");
+						out.print("</a></li>"); 
+					}
+					%>
 				</ul>
 			</div>
 		</nav>
