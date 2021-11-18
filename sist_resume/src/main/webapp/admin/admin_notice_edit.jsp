@@ -5,12 +5,9 @@
     info="공지사항 수정 페이지"
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/common/jsp/common_code.jsp" %>
 
 <c:if test="${ empty sess_id }">
-<script type="text/javascript">
-location.href="<%=protocol%><%=domain%><%=contextRoot%>/admin/admin_login.jsp";
-</script>
+<c:redirect url="http://localhost/sist_resume/admin/admin_login.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
@@ -20,8 +17,6 @@ location.href="<%=protocol%><%=domain%><%=contextRoot%>/admin/admin_login.jsp";
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>공지사항 관리 페이지</title>
-
-<link rel="stylesheet" type="text/css" href="http://localhost/jsp_prj/common/css/main_v20211012.css">
 
 <style type="text/css">
 .notice_title{margin: 0px auto; width: 1000px}
@@ -55,7 +50,7 @@ $(document).ready(function() {
         	    ['fontsize', ['fontsize']],
         	    ['color', ['color']],
         	    ['table',['table']],
-        	    ['insert', ['link', 'picture', 'video']]
+        	    ['insert', ['link']] //, 'picture', 'video']]
         	  ]
         });
 }); //ready

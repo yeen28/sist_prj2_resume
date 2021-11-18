@@ -4,6 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${ empty sess_id }">
+<c:redirect url="http://localhost/sist_resume/admin/admin_login.jsp"/>
+</c:if>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +44,8 @@ hr{border: 0; height: 2px; background: #ccc; width: 1000px; margin: auto;}
 $(function () {
 	$("#listbtn").click(function() {
 		location.href="http://localhost/sist_resume/admin/admin_job_post_main.jsp";
-	})
+	});
+	
 })//ready
 
 </script>
@@ -59,7 +65,6 @@ $(function () {
  	
 	%> 
 <div class="center">
-	
 	<div id="container">
 		<div style="margin: 0px auto; width: 900px;text-align: left; margin-bottom: 80px">
 			<h3 class="title2">채용공고 관리</h3>
@@ -129,5 +134,6 @@ $(function () {
 	</div>
 
 </div>
+
 </body>
 </html>

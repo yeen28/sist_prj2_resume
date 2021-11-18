@@ -58,7 +58,7 @@ $(function () {
 						<div class="input-group-addon" aria-label="center Align">
 							<span class="glyphicon glyphicon-user"  style="height: 28px; padding-top: 8px;"  aria-hidden="true"></span>
 						</div>
-						 <input value="test" type="text" class="form-control"  name="admin_id" style="height: 50px"  aria-label="Large"  id="admin_id" placeholder="아이디를 입력하세요">
+						 <input value="hj" type="text" class="form-control"  name="admin_id" style="height: 50px"  aria-label="Large"  id="admin_id" placeholder="아이디를 입력하세요">
 					</div>
 				</div>
 				<div class="margin1">
@@ -67,7 +67,7 @@ $(function () {
 						<div class="input-group-addon" aria-label="center Align">
 							<span class="glyphicon glyphicon-align-center"  style="height: 28px; padding-top: 8px;"  aria-hidden="true"></span>
 						</div>
-						 <input value="dddd" type="password" class="form-control"   style="height: 50px"  aria-label="Large"  id="admin_pass" name="admin_pass" placeholder="비밀번호를 입력하세요">
+						 <input value="sist" type="password" class="form-control"   style="height: 50px"  aria-label="Large"  id="admin_pass" name="admin_pass" placeholder="비밀번호를 입력하세요">
 					</div>
 				</div>
 				<div class="margin1">

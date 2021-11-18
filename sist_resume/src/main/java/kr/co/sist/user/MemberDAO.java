@@ -31,24 +31,6 @@ public class MemberDAO {
 	}//insertMember
 	
 	/**
-	 * 	프로필 정보  insert
-	 * @param id
-	 * @throws DataAccessException
-	 */
-//	public void insertProfile(String id) throws DataAccessException {
-//			
-//			GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
-//			JdbcTemplate jt = gjt.getJdbcTemplate();
-//			
-//			String insertProfile = 
-//					"insert into profile(idx,gender,phone,description,url,img,input_date,tech_idx,id) values(profile_seq.nextval,null,null,null,null,null,sysdate,null,?)";
-//			jt.update(insertProfile, id);
-//			//4. Spring Container 닫기
-//			gjt.closeAc();
-//			
-//		}//insertProfile
-	
-	/**
 	 * 로그인 처리
 	 * @param id
 	 * @param pw
@@ -73,41 +55,6 @@ public class MemberDAO {
 		
 		return result;
 	}//selectLogin
-	
-	/**
-	 * 회원 정보 조회
-	 * @param id
-	 * @param pw
-	 * @return 아이디,이름,이메일
-	 * @throws SQLException
-	 */
-//	public LoginVO selectAll( String id, String pw ) throws SQLException {
-//		LoginVO returnMember=null;
-//		
-//		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
-//		
-//		JdbcTemplate jt=gjt.getJdbcTemplate();
-//		
-//		StringBuilder selectMember=new StringBuilder();
-//		selectMember
-//		.append("	select id, name, email	")
-//		.append("	from users	")
-//		.append("	where id=? and password=? ");
-//		returnMember=jt.queryForObject(selectMember.toString(), new Object[] { id, pw }, 
-//				new RowMapper<LoginVO>() {
-//					public LoginVO mapRow(ResultSet rs, int rowNum) throws SQLException{
-//						LoginVO lv=new LoginVO();
-//						lv.setId(rs.getString("id"));
-//						lv.setName(rs.getString("name"));
-//						lv.setEmail(rs.getString("email"));
-//						return lv;
-//					}//mapRow
-//				});
-//		
-//		gjt.closeAc();
-//		
-//		return returnMember;
-//	}//selectLogin
 	
 	/**
 	 * 아이디 찾기
@@ -279,6 +226,33 @@ public class MemberDAO {
 	}//deleteMember
 	
 	/**
+	 * 회원탈퇴시 보여주는 포트폴리오 개수
+	 * @param id
+	 * @return 포트폴리오 개수
+	 * @throws SQLException
+	 */
+	public int cntPortfolio(String id) throws SQLException{
+		int cnt=0;
+		
+		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+		
+		JdbcTemplate jt=gjt.getJdbcTemplate();
+		
+		String select="select count(idx) from portfolio where id=?";
+		cnt=jt.queryForObject(select, new Object[] { id }, Integer.class);
+		
+		gjt.closeAc();
+		
+		return cnt;
+	}//cntPortfolio
+	
+
+	
+	
+	
+	
+	
+	/**
 	 * 회원이 선택한 관심분야 얻기
 	 * @param id
 	 * @return 관심분야
@@ -395,25 +369,67 @@ public class MemberDAO {
 	}//selUserInfo
 	
 	/**
-	 * 회원탈퇴시 보여주는 포트폴리오 개수
-	 * @param id
-	 * @return 포트폴리오 개수
+	 * 공지사항 최근 몇개만 얻기
+	 * @return 
 	 * @throws SQLException
 	 */
-	public int cntPortfolio(String id) throws SQLException{
-		int cnt=0;
+	public List<String> selNoticeTitle() throws SQLException{
+		List<String> title=null;
 		
 		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
 		
 		JdbcTemplate jt=gjt.getJdbcTemplate();
 		
-		String select="select count(idx) from portfolio where id=?";
-		cnt=jt.queryForObject(select, new Object[] { id }, Integer.class);
+		StringBuilder select=new StringBuilder();
+		select
+		.append("	select title	")
+		.append("	from (select rownum r_num, title	")
+		.append("	from (select title	")
+		.append("	from notice	")
+		.append("	order by idx desc))	")
+		.append("	where r_num between 1 and 8	");
+		title=jt.query(select.toString(), new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("title");
+			}
+		});
 		
 		gjt.closeAc();
 		
-		return cnt;
-	}//cntPortfolio
+		return title;
+	}//selNoticeTitle
+	
+	public List<String> selJobPostTitle() throws SQLException{
+		List<String> company=null;
+		
+		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+		
+		JdbcTemplate jt=gjt.getJdbcTemplate();
+		
+		StringBuilder select=new StringBuilder();
+		select
+		.append("	select company	")
+		.append("	from (select rownum r_num, company	")
+		.append("	from (select company	")
+		.append("	from job_post	")
+		.append("	order by idx desc))	")
+		.append("	where r_num between 1 and 8	");
+		company=jt.query(select.toString(), new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("company");
+			}
+		});
+		
+		gjt.closeAc();
+		
+		return company;
+	}//selJobPostTitle
+	
+	
+	
+	
 	
 	
 	public List<MemberVO> selectAllUser(String pw) throws SQLException{
