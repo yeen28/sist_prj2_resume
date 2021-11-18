@@ -387,7 +387,7 @@ public class MemberDAO {
 		.append("	from (select title	")
 		.append("	from notice	")
 		.append("	order by idx desc))	")
-		.append("	where r_num between 1 and 8	");
+		.append("	where r_num between 1 and 10	");
 		title=jt.query(select.toString(), new RowMapper<String>() {
 			@Override
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {

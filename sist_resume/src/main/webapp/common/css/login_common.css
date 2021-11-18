@@ -8,8 +8,10 @@
 	overflow: hidden
 }
 
-.t-label{
-	padding: 0.375rem 0;
+.table>tr>.t-label{
+	width: 300px;
+	padding: 0;
+/* 	padding: 0.375rem 0; */
 	font-size: 14px;
 	vertical-align: top;
 	color:#5F7F90;
@@ -103,13 +105,14 @@ i {
 }
 
 .link_login{
-	width: 250px;
+	width: 290px;
 }
 
 .sc_login .link_login {
 	display: block;
 	padding: 15px 0;
 	margin-top: 11px;
+	margin-left: 10px;
 	background-color: #333;
 	border: 1px solid #333;
 	-webkit-border-radius: 2px;

@@ -76,30 +76,31 @@ pageContext.setAttribute("listPhone", listPhone);
   <h3><%= iv.getName() %></h3>
   <a href="http://localhost/sist_resume/login/logout.jsp">로그아웃</a>
   <br/><br/><br/>
-  <table class="table">
+  <table class="table table2">
   <tr>
-    <td class="t-label"><span class="glyphicon glyphicon-earphone" aria-hidden="true">전화번호</span></td>
+    <td class="t-label" style="padding-left: 0;">전화번호</td>
     <td class="t-label">
   <c:forEach var="phone" items="${ listPhone }">
-  <c:out value="${ phone }"/><br/>
+  <%-- <c:out value="${ phone }"/><br/> --%>
+  ${ phone }<br/>
   </c:forEach>
 	</td>
   </tr>
   <tr>
-    <td class="t-label"><span class="glyphicon glyphicon-envelope" aria-hidden="true">이메일</span></td>
-    <td class="t-label"><%= iv.getEmail() %></td>
+    <td class="t-label lab" style="padding-left: 0;">이메일</td>
+    <td class="t-label t-content"><%= iv.getEmail() %></td>
   </tr>
   <tr>
-    <td class="t-label">관심분야</td>
-    <td class="t-label">
+    <td class="t-label lab" style="padding-left: 0;">관심분야</td>
+    <td class="t-label t-content">
        <c:forEach var="sub" items="${ listSub }">
 		<c:out value="${ sub }"/><br/>
 	   </c:forEach>
 	</td>
   </tr>
   <tr>
-    <td class="t-label">홈페이지</td>
-    <td class="t-label">
+    <td class="t-label lab" style="padding-left: 0;">홈페이지</td>
+    <td class="t-label t-content">
        <c:forEach var="url" items="${ listUrl }">
 		<c:out value="${ url }"/><br/>
 	   </c:forEach>
@@ -109,69 +110,9 @@ pageContext.setAttribute("listPhone", listPhone);
 </div>
 </c:otherwise>
 </c:choose>
-		<!-- login 밑의 공간 -->
-		<!-- <div id="ad"></div> -->
 		</div>
 
 		<div id="container_right">
-		<!-- 채용프로그램 -->
-			<div id="top">
-				<div class="subtitle">
-					<span class="subtitle_text">채용프로그램</span>
-				</div>
-				<!-- carousel -->
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-						</ol>
-
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-							<div class="item active">
-								<a href="#void">
-									<img src="http://localhost/sist_resume/common/images/carousel1.PNG" alt="first image">
-								</a>
-							</div>
-							<div class="item">
-								<a href="#void">
-									<img src="http://localhost/sist_resume/common/images/carousel2.PNG" alt="second image">
-								</a>
-							</div>
-							<div class="item">
-								<a href="#void">
-									<img src="http://localhost/sist_resume/common/images/carousel3.PNG" alt="third image">
-								</a>
-							</div>
-						</div>
-						<!-- Controls -->
-						<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
-				</div>
-				<div class="blank"></div>
-				<!-- 유튜브 추천 -->
-				<div id="mid">
-					<div class="subtitle">
-						<span class="subtitle_text">유튜브 추천</span>
-					</div>
-					<div>
-						<iframe width="500" height="281"
-							src="https://www.youtube.com/embed/ThGbP9wgkz8"
-							title="YouTube video player" frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen></iframe>
-					</div>
-				</div>
-				
 				<!-- 채용공고 -->
 				<div id="bottom-left" class="panel panel-default">
 					<div class="panel-heading notice_subtitle">
@@ -209,6 +150,26 @@ pageContext.setAttribute("listPhone", listPhone);
 					</div>
 				</div>
 
+				<div class="blank"></div>
+				
+				<!-- 유튜브 추천 -->
+				<div id="mid" style="clear: both;">
+					<div class="subtitle">
+						<span class="subtitle_text">유튜브 추천</span>
+					</div>
+					<div>
+						<iframe width="500" height="280"
+							src="https://www.youtube.com/embed/ThGbP9wgkz8"
+							title="YouTube video player" frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen style="flot:left"></iframe>
+						<iframe width="490" height="280" 
+						src="https://www.youtube.com/embed/3H4umWD5bwI" 
+						title="YouTube video player" frameborder="0" 
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 
