@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.profile_head {
+	border-bottom: 2px solid #333;
+	margin-top: 70px;
+}
+
+.profile_body {
+	border: 1px solid #333;
+	background-color: #FAF4C0;
+	margin-top: 70px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 100px;
+}
+
+.frm_body {
+	margin: 50px;
+}
+
+.prof_img {
+	background-color: white;
+	width: 200px;
+	height: 200px;
+}
+
+.prof_save_btn {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.prof_ele {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}

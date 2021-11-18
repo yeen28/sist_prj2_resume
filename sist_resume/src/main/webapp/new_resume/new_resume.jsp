@@ -8,7 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% session.setAttribute("id", "android123"); %>
 <!-- 세션에 로그인 정보 없을때 -->
 <c:if test="${ empty sessionScope.id }">
 	<c:redirect url="http://localhost/sist_resume/login/login_page.jsp"></c:redirect>
@@ -191,7 +190,7 @@ $(function() {
 	<div class="container">
 		<div class="resume_wrap">
 			<div class="resume_head">
-				<h2>내 프로필</h2>
+				<h2>내 이력서</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-3">
@@ -202,7 +201,7 @@ $(function() {
 							</h1>
 						</div>
 						<div>
-							<img src="${ pVO.img }" class="img-responsive img-circle prof_img"
+							<img src="http://localhost/sist_resume/new_profile/upload/${ pVO.img }" width="200px;" class="img-responsive img-circle prof_img"
 								onerror="this.src='http://localhost/sist_resume/common/images/defalt.jpg'">
 						</div>
 						<div class="resume_profile_info">

@@ -29,7 +29,7 @@ String userName = (String) session.getAttribute("userName");
 					<li><a href="http://localhost/sist_resume/new_notice/notice_list.jsp">공지사항</a></li>
 					<%
 					if(userName != null && !userName.equals("")) {
-						out.print("<li><a href='http://localhost/sist_resume/profile/profile.jsp'>"); 
+						out.print("<li><a href='http://localhost/sist_resume/new_profile/new_profile.jsp'>"); 
 						out.print(userName + "'s 프로필");
 						out.print("</a></li>"); 
 					}

@@ -27,12 +27,14 @@ body {
 
 a:hover {
 	text-decoration: none;
+	color: #FFFFFF;
 }
 
 /* NavBar */
 #nav-bloc {
 	margin-top: 30px;
 	background-color: #1c1c1c;
+	background: linear-gradient(to left bottom, #0054FF, #CEFBC9);
 }
 
 .navbar {
@@ -42,7 +44,8 @@ a:hover {
 .navbar-brand {
 	font-size: 30px;
 	font-family: TmonMonsori;
-	color: #ffffff;
+	color: #FFFFFF;
+	text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
 }
 
 .navbar-brand img {
