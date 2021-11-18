@@ -13,7 +13,7 @@ try {
 	CareerVO careerVO = rDAO.selectCareer(id);
 	pageContext.setAttribute("careerVO", careerVO);
 } catch (DataAccessException e) {
-	e.printStackTrace();
+	System.out.println("저장된 경력이 1건이 아닙니다.");
 }
 %>
 

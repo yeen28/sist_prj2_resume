@@ -36,7 +36,6 @@
 	border: 1px solid #D5D5D5;
 	margin-bottom: 50px;
 	padding: 30px;
-	background-color: aqua;
 }
 
 .resume_form {
@@ -45,4 +44,8 @@
 
 .resume_profile_info {
 	margin-top: 30px;
+}
+
+.edit_prof {
+	margin-top: 50px;
 }

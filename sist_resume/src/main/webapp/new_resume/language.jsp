@@ -12,7 +12,7 @@ try {
 	LanguageVO langVO = rDAO.selectLang(id);
 	pageContext.setAttribute("langVO", langVO);
 } catch (DataAccessException e) {
-	e.printStackTrace();
+	System.out.println("저장된 외국어가 1건이 아닙니다.");
 }
 %>
 <div class="row resume_card_header">

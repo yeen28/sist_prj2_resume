@@ -17,7 +17,7 @@ try {
 alert("저장되었습니다.");
 <%
 } catch(DataAccessException e) {
-	e.printStackTrace();
+	System.out.println("데이터 액세스 익셉션 발생");
 %>
 alert("저장에 실패하였습니다.");
 <%

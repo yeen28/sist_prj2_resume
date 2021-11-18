@@ -12,7 +12,7 @@ try {
 	EducationVO eduVO = rDAO.selectEducation(id);
 	pageContext.setAttribute("eduVO", eduVO);
 } catch (DataAccessException e) {
-	e.printStackTrace();
+	System.out.println("저장된 학력이 1건이 아닙니다.");
 }
 
 %>

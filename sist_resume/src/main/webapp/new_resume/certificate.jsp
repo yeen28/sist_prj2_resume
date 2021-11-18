@@ -13,7 +13,7 @@ try {
 	CertificateVO certVO = rDAO.selectCert(id);
 	pageContext.setAttribute("certVO", certVO);
 } catch (DataAccessException e) {
-	e.printStackTrace();
+	System.out.println("저장된 자격/수상이 1건이 아닙니다.");
 }
 %>
 

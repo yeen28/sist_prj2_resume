@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%
+<%
 session.setAttribute("id", "android123");
-%> --%>
+%>
 <!-- 세션에 이름이 없음 -->
 <c:if test="${ empty sessionScope.id }">
-	<c:redirect url="login_page.jsp"></c:redirect>
+	<c:redirect url="http://localhost/sist_resume/login/login_page.jsp"></c:redirect>
 </c:if>
 <%
 String id = (String) session.getAttribute("id");
@@ -190,6 +190,9 @@ $(function() {
 						</div>
 						<div class="resume_profile_info">
 							<strong>내 홈페이지 URL </strong>
+						</div>
+						<div class="edit_prof">
+							<a href="#http://localhost/sist_resume/profile/profile.jsp">내 프로필 수정</a>
 						</div>
 					</div>
 				</div>

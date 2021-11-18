@@ -23,6 +23,9 @@ String password=DataEncrypt.messageDigest( "SHA-1", request.getParameter("passwo
 MemberDAO mDAO=new MemberDAO();
 	String id=mDAO.selectLogin(lVO.getId(), password);
 	session.setAttribute("id", id);
+	// 헤더에 이름이 필요해서 세션에 올림
+	String userName = mDAO.selUserInfo(id).getName();
+	session.setAttribute("userName", userName);
 
 /* List<String> listSub=mDAO.selectSub( mVO.getId() );
 List<String> listUrl=mDAO.selectUrl( mVO.getId() );
