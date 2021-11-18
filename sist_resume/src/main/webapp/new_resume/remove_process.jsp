@@ -24,5 +24,5 @@ try {
 <%
 }
 %>
-location.href = "http://localhost/temp1_proj/new_resume/new_resume.jsp";
+location.href = "http://localhost/sist_resume/new_resume/new_resume.jsp";
 </script>

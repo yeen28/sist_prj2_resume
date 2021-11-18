@@ -39,7 +39,10 @@ public class ResumeDAO {
 		return cVO;
 	}
 
-	public void updateCareer(CareerVO cVO) throws DataAccessException {
+	public int updateCareer(CareerVO cVO) throws DataAccessException {
+		int count = 0;
+		
+		
 		GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
 		JdbcTemplate jt = gjt.getJdbcTemplate();
 
@@ -48,15 +51,16 @@ public class ResumeDAO {
 		String updateCareer;
 		if (cVO.getIdx() == 0) {
 			updateCareer = "insert into career values(career_seq.nextval, ?, ?, ?, ?, ?, ?)";
-			jt.update(updateCareer, cVO.getCompany(), cVO.getTask(), cVO.getPeriod(), cVO.getDescription(),
+			count = jt.update(updateCareer, cVO.getCompany(), cVO.getTask(), cVO.getPeriod(), cVO.getDescription(),
 					cVO.getTech(), cVO.getId());
 		} else {
 			updateCareer = "update career set company=?, task=?, period=?, description=?, tech=? where idx = ?";
-			jt.update(updateCareer, cVO.getCompany(), cVO.getTask(), cVO.getPeriod(), cVO.getDescription(),
+			count = jt.update(updateCareer, cVO.getCompany(), cVO.getTask(), cVO.getPeriod(), cVO.getDescription(),
 					cVO.getTech(), cVO.getIdx());
 		}
 
 		gjt.closeAc();
+		return count;
 	}
 
 	public EducationVO selectEducation(String id) throws SQLException {
@@ -90,22 +94,24 @@ public class ResumeDAO {
 		return eVO;
 	}
 
-	public void updateEdu(EducationVO eVO) throws DataAccessException {
+	public int updateEdu(EducationVO eVO) throws DataAccessException {
+		int count = 0;
 		GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
 		JdbcTemplate jt = gjt.getJdbcTemplate();
 
 		String updateEdu;
 		if (eVO.getIdx() == 0) {
 			updateEdu = "insert into education values(?, ?, ?, ?, ?, ?, ?, ?, ?, edu_seq.nextval)";
-			jt.update(updateEdu, eVO.getUniv(), eVO.getMajor(), eVO.getDegree(), eVO.getEnt(), eVO.getGrad(),
+			count = jt.update(updateEdu, eVO.getUniv(), eVO.getMajor(), eVO.getDegree(), eVO.getEnt(), eVO.getGrad(),
 					eVO.getScore(), eVO.getMax_score(), eVO.getDescription(), eVO.getId());
 		} else {
 			updateEdu = "update education set univ=?, major=?, Degree=?, ent=?, grad=?, score=?, max_score=?, description=? where idx = ?";
-			jt.update(updateEdu, eVO.getUniv(), eVO.getMajor(), eVO.getDegree(), eVO.getEnt(), eVO.getGrad(),
+			count = jt.update(updateEdu, eVO.getUniv(), eVO.getMajor(), eVO.getDegree(), eVO.getEnt(), eVO.getGrad(),
 					eVO.getScore(), eVO.getMax_score(), eVO.getDescription(), eVO.getIdx());
 		}
 
 		gjt.closeAc();
+		return count;
 	}
 
 	public CertificateVO selectCert(String id) throws SQLException {
@@ -135,20 +141,24 @@ public class ResumeDAO {
 		return cVO;
 	}
 
-	public void updateCert(CertificateVO cVO) throws DataAccessException {
+	public int updateCert(CertificateVO cVO) throws DataAccessException {
+		int count = 0;
+		
 		GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
 		JdbcTemplate jt = gjt.getJdbcTemplate();
 
 		String updateCert;
 		if (cVO.getIdx() == 0) {
 			updateCert = "insert into certificate values(cert_seq.nextval, ?, ?, ?, ?)";
-			jt.update(updateCert, cVO.getTitle(), cVO.getGet_date(), cVO.getDescription(), cVO.getId());
+			count = jt.update(updateCert, cVO.getTitle(), cVO.getGet_date(), cVO.getDescription(), cVO.getId());
 		} else {
 			updateCert = "update certificate set title=?, get_date=?, description=? where idx=?";
-			jt.update(updateCert, cVO.getTitle(), cVO.getGet_date(), cVO.getDescription(), cVO.getIdx());
+			count = jt.update(updateCert, cVO.getTitle(), cVO.getGet_date(), cVO.getDescription(), cVO.getIdx());
 		}
 
 		gjt.closeAc();
+		
+		return count;
 	}
 
 	public LanguageVO selectLang(String id) throws SQLException {
@@ -178,20 +188,24 @@ public class ResumeDAO {
 		return lVO;
 	}
 	
-	public void updateLang(LanguageVO lVO) throws DataAccessException {
+	public int updateLang(LanguageVO lVO) throws DataAccessException {
+		int count = 0;
+		
 		GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
 		JdbcTemplate jt = gjt.getJdbcTemplate();
 
 		String updateLang;
 		if (lVO.getIdx() == 0) {
 			updateLang = "insert into language values(lang_seq.nextval, ?, ?, ?, ?)";
-			jt.update(updateLang, lVO.getLang(), lVO.getExam_title(), lVO.getScore(), lVO.getId());
+			count = jt.update(updateLang, lVO.getLang(), lVO.getExam_title(), lVO.getScore(), lVO.getId());
 		} else {
 			updateLang = "update language set lang=?, exam_title=?, score=? where idx=?";
-			jt.update(updateLang, lVO.getLang(), lVO.getExam_title(), lVO.getScore(), lVO.getIdx());
+			count = jt.update(updateLang, lVO.getLang(), lVO.getExam_title(), lVO.getScore(), lVO.getIdx());
 		}
 
 		gjt.closeAc();
+		
+		return count;
 	}
 
 	public void deleteRow(String table, int idx) throws DataAccessException {

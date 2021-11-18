@@ -1,13 +1,39 @@
+<%@page import="org.springframework.dao.DataAccessException"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.sist.user.IndexVO"%>
+<%@page import="kr.co.sist.user.MemberDAO"%>
+<%@page import="kr.co.sist.profile.ProfileVO"%>
+<%@page import="kr.co.sist.profile.ProfileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 임시 아이디 정보 -->
+<% session.setAttribute("id", "android123"); %>
+
 <!-- 세션에 로그인 정보 없을때 -->
 <c:if test="${ empty sessionScope.id }">
 	<c:redirect url="http://localhost/sist_resume/login/login_page.jsp"></c:redirect>
 </c:if>
 <%
 String id = (String) session.getAttribute("id");
-String userName = (String) session.getAttribute("userName");
+
+ProfileDAO pDAO = new ProfileDAO();
+MemberDAO mDAO = new MemberDAO();
+
+try {
+	ProfileVO pVO = pDAO.selProfile(id);
+	List<String> tList = pDAO.selectUserTech(pVO.getTech_idx());
+	IndexVO iVO = mDAO.selUserInfo(id);
+	
+	pageContext.setAttribute("pVO", pVO);
+    pageContext.setAttribute("iVO", iVO);
+	pageContext.setAttribute("tList", tList);
+} catch(SQLException e) {
+	e.printStackTrace();
+} catch(DataAccessException e) {
+	e.printStackTrace();
+}
 %>
 
 <!DOCTYPE html>
@@ -16,7 +42,7 @@ String userName = (String) session.getAttribute("userName");
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>이력서 작성</title>
+<title>이력서 관리</title>
 
 <!--jQuery CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -162,6 +188,8 @@ $(function() {
 <body>
 	<!-- header -->
 	<jsp:include page="/headerfooter/header.jsp"></jsp:include>
+	
+
 	<div class="container">
 		<div class="resume_wrap">
 			<div class="resume_head">
@@ -172,27 +200,26 @@ $(function() {
 					<div class="resume_profile">
 						<div class="resume_profile_info">
 							<h1>
-								<%= userName %>
+								${ iVO.name }
 							</h1>
 						</div>
 						<div>
-							<img
-								src="https://assets.materialup.com/uploads/b78ca002-cd6c-4f84-befb-c09dd9261025/preview.png"
-								class="img-responsive img-circle" alt="이미지를 등록하세요">
+							<img src="${ pVO.img }" class="img-responsive img-circle"
+								onerror="this.src='http://localhost/sist_resume/common/images/defalt.jpg'">
 						</div>
 						<div class="resume_profile_info">
-							<strong>전화번호 여기에</strong>
+							<strong>${ pVO.phone }</strong>
 							<br>
-							<strong>이메일 여기에</strong>
+							<strong>${ iVO.email }</strong>
 						</div>
 						<div class="resume_profile_info">
-							<strong>선호기술 </strong>
+							<strong></strong>
 						</div>
 						<div class="resume_profile_info">
-							<strong>내 홈페이지 URL </strong>
+							<strong>${ pVO.url }</strong>
 						</div>
 						<div class="edit_prof">
-							<a href="#http://localhost/sist_resume/profile/profile.jsp">내 프로필 수정</a>
+							<a href="http://localhost/sist_resume/profile/profile.jsp">내 프로필 수정</a>
 						</div>
 					</div>
 				</div>
