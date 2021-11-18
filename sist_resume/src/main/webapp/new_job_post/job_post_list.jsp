@@ -69,7 +69,7 @@ pageContext.setAttribute("selectJobpost", list);
 		<div class="job_post_head">
 			<h2 style="font-weight: bold;">채용공고</h2>
 		</div>
-	<div>
+	<%-- <div>
 		<div class="company">
 			<div class="input-group">
 				<span class="input-group-btn">
@@ -86,7 +86,7 @@ pageContext.setAttribute("selectJobpost", list);
 				<input type="text" class="form-control" placeholder="관심분야명">
 			</div>
 		</div>
-	</div>
+	</div> --%>
 	<div style="width: 1300px" >
 		<table class="table table-hover">
 			<thead>
@@ -111,7 +111,6 @@ pageContext.setAttribute("selectJobpost", list);
 			</tbody>
 		</table>
 	</div>		
-	<div class="text-center">
 		<nav id="pagination">
 					<ul class="pagination">
 						<li>
@@ -133,7 +132,6 @@ pageContext.setAttribute("selectJobpost", list);
 						</li>
 					</ul>
 				</nav>
-	</div>
 	</div>
 	</div>
 	
