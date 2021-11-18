@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import kr.co.sist.admin.JobpostVO;
 import kr.co.sist.dao.GetJdbcTemplate;
 
 public class job_postDAO {
@@ -129,5 +130,40 @@ public class job_postDAO {
 		return jpVO;
 		
 	}//selectJobpost
+	
+	
+	/**
+	 * 채용공고 추가페이지 기술직군 select 데이터
+	 * @param idx
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<JobpostVO> selectAllSubject(int idx) throws SQLException {
+		List<JobpostVO> list = null;
+		
+		GetJdbcTemplate gjt = GetJdbcTemplate.getInstance();
+		JdbcTemplate jt = gjt.getJdbcTemplate();
+		StringBuilder selectSubject = new StringBuilder();
+		
+		selectSubject
+		.append("  select idx, subject ")
+		.append( " from tech_stack ");
+		
+		list = jt.query(selectSubject.toString(), new SelectSubject());
+		
+		gjt.closeAc();
+		
+		return list;
+	}//selectAllSubject
+	
+	public class SelectSubject implements RowMapper<JobpostVO> {
+		public JobpostVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+			JobpostVO jv = new JobpostVO();
+			jv.setIdx(rs.getInt("idx"));
+			jv.setSubject(rs.getString("subject"));
+			
+			return jv;
+		}
+	}//SelectSubject
 
 }//class

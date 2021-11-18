@@ -1,7 +1,10 @@
+<%@page import="kr.co.sist.admin.JobpostDAO"%>
+<%@page import="kr.co.sist.admin.JobpostVO"%>
 <%@page import="kr.co.sist.job_post.job_postVO"%>
 <%@page import="kr.co.sist.job_post.job_postDAO"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8" info="채용공고"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +39,10 @@ String param1=request.getParameter("idx");
 int idx=Integer.parseInt(param1);
 job_postDAO jpDAO=new job_postDAO();
 job_postVO jpVO=jpDAO.selectJobpost(idx);
+
+JobpostVO jVO=new JobpostDAO().selectAllJobpost_list(idx);
+	//scope객체 사용
+	pageContext.setAttribute("jpData", jVO);
 %>
 <!-- header -->
 	<jsp:include page="/headerfooter/header.jsp"></jsp:include>
@@ -79,7 +86,7 @@ job_postVO jpVO=jpDAO.selectJobpost(idx);
 				<th style="width: 170px; font-size: 17px; font-weight: bold; color: #333; text-align: center;">업무소개</th>
 			</tr>
 			<tr>
-				<td style="width: 830px; font-size: 17px; color: #333">기술직군</td>
+				<td style="width: 830px; font-size: 17px; color: #333"><c:out value=" ${jpData.subject }"/></td>
 				<td style="width: 830px; font-size: 17px; color: #333"><%= jpVO.getCareer() %></td>
 				<td style="width: 830px; font-size: 17px; color: #333"><%= jpVO.getInput_date() %></td>
 				<td style="width: 830px; font-size: 17px; color: #333"><%= jpVO.getDescription() %></td>
