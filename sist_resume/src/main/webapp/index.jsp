@@ -1,5 +1,4 @@
 <%@page import="kr.co.sist.user.LoginVO"%>
-<%@page import="kr.co.sist.user.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.sist.user.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,14 +22,15 @@
 
 <link rel="stylesheet" href="http://localhost/sist_resume/common/css/login_common.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://localhost/sist_resume/main_index/main_page.css" type="text/css" media="all" />
-
 </head>
 
 <body>
 <%
-MemberDAO mDAO=new MemberDAO();
-List<String> listNotice=mDAO.selNoticeTitle();
+MemberDAO md=new MemberDAO();
+List<String> listNotice=md.selNoticeTitle();
+List<String> listJob=md.selJobPostTitle();
 pageContext.setAttribute("listNotice", listNotice);
+pageContext.setAttribute("listJob", listJob);
 %>
 <div id="main_wrap">
   <!-- header -->
@@ -60,12 +60,12 @@ pageContext.setAttribute("listNotice", listNotice);
 <%
 String id=(String)session.getAttribute("id");
 
-List<String> listSub=mDAO.selectSub(id);
-List<String> listUrl=mDAO.selectUrl(id);
-List<String> listPhone=mDAO.selectPhone(id);
+List<String> listSub=md.selectSub(id);
+List<String> listUrl=md.selectUrl(id);
+List<String> listPhone=md.selectPhone(id);
 
-iv.setEmail(mDAO.selUserInfo(id).getEmail());
-iv.setName(mDAO.selUserInfo(id).getName());
+iv.setEmail(md.selUserInfo(id).getEmail());
+iv.setName(md.selUserInfo(id).getName());
 
 pageContext.setAttribute("listSub", listSub);
 pageContext.setAttribute("listUrl", listUrl);
@@ -74,7 +74,6 @@ pageContext.setAttribute("listPhone", listPhone);
 <div id="user">
   <h3><%= iv.getName() %></h3>
   <a href="http://localhost/sist_resume/login/logout.jsp">로그아웃</a>
-  <a href="http://localhost/sist_resume/profile/profile.jsp">마이페이지</a>
   <br/><br/><br/>
   <table class="table">
   <tr>
@@ -110,7 +109,7 @@ pageContext.setAttribute("listPhone", listPhone);
 </c:otherwise>
 </c:choose>
 		<!-- login 밑의 공간 -->
-		<div id="ad"></div>
+		<!-- <div id="ad"></div> -->
 		</div>
 
 		<div id="container_right">
@@ -171,19 +170,44 @@ pageContext.setAttribute("listPhone", listPhone);
 							allowfullscreen></iframe>
 					</div>
 				</div>
-
-				<!-- 공지사항 -->
-				<div id="bottom">
-					<div class="subtitle">
-						<span class="subtitle_text">공지사항</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="http://localhost/sist_resume/new_notice/notice_list.jsp"><span id="moreView">더보기</span></a>
+				
+				<!-- 채용공고 -->
+				<div id="bottom-left" class="panel panel-default">
+					<div class="panel-heading notice_subtitle">
+						<span class="notice_subtitle_text">채용공고</span>&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="moreView">
+						<a href="http://localhost/sist_resume/new_job_post/job_post_list.jsp">
+						<span id="moreView"><img src="http://localhost/sist_resume/common/images/icons/moreView.PNG" width="25px"/></span>
+						</a>
+						</div>
 					</div>
+				<div class="panel-body">
+					<ul id="notice">
+					<c:forEach var="job_post" items="${ listJob }">
+						<li><a href="http://localhost/sist_resume/new_job_post/job_post_list.jsp"><c:out value="${ job_post }"/></a></li>
+					</c:forEach>
+					</ul>
+					</div>
+				</div>
+				<!-- 공지사항 -->
+				<div id="bottom-right" class="panel panel-default">
+					<div class="panel-heading notice_subtitle">
+						<span class="notice_subtitle_text">공지사항</span>&nbsp;&nbsp;&nbsp;&nbsp;
+						<div id="moreView">
+						<a href="http://localhost/sist_resume/new_notice/notice_list.jsp">
+						<span id="moreView"><img src="http://localhost/sist_resume/common/images/icons/moreView.PNG" width="25px"/></span>
+						</a>
+						</div>
+					</div>
+				<div class="panel-body">
 					<ul id="notice">
 					<c:forEach var="notice" items="${ listNotice }">
 						<li><a href="http://localhost/sist_resume/new_notice/notice_list.jsp"><c:out value="${ notice }"/></a></li>
 					</c:forEach>
 					</ul>
+					</div>
 				</div>
+
 			</div>
 		</div>
 

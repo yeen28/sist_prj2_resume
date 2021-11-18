@@ -4,13 +4,13 @@
 	width: 300px;
 	text-align: left;
 	padding: 30px;
-	border: 1px solid #333;
+	border: 1px solid #dfdfdf;
 }
 
 #container {
 	width: 1360px;
 	margin: 50px auto;
-	height: 1500px;
+	height: 1300px;
 }
 
 #container_left {
@@ -41,19 +41,20 @@
 	height: 500px;
 }
 
-#mid {
-	width: 1000px;
-	height: 700px
-}
-
-#bottom {
-	padding-left: 30px;
-	width: 300px;
-	height: 250px;
-	border: 1px solid #dfdfdf;
+#bottom-left, #bottom-right {
+	margin-top: 70px;
+	width: 480px;
 	font-size: 14px;
 }
-
+#bottom-left, #bottom-right {
+	float: left;
+}
+#bottom-right {
+	float: right;
+}
+#moreView{
+	float: right;
+}
 #notice {
 	list-style: disc;
 	margin-left: 10px;
@@ -63,12 +64,24 @@
 	font-size: 13px;
 	color: #0000FF
 }
-
 .subtitle {
-	padding: 20px;
-	padding-left: 0px
+	padding: 20px 0 20px 0;
 }
 
+.panel-default>.notice_subtitle{
+	background-image: -webkit-linear-gradient(top,#fff 0,#fff 100%);
+    background-image: -o-linear-gradient(top,#fff 0,#fff 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#fff));
+    background-image: linear-gradient(to bottom,#fff 0,#fff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fff', GradientType=0);
+    background-repeat: repeat-x;
+	background-color: #fff;
+}
+
+.notice_subtitle_text {
+	font-size: 20px;
+	font-weight: bold;
+}
 .subtitle_text {
 	font-size: 20px;
 	font-weight: bold;

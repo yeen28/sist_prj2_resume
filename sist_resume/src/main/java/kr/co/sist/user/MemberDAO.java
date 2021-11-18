@@ -226,6 +226,33 @@ public class MemberDAO {
 	}//deleteMember
 	
 	/**
+	 * 회원탈퇴시 보여주는 포트폴리오 개수
+	 * @param id
+	 * @return 포트폴리오 개수
+	 * @throws SQLException
+	 */
+	public int cntPortfolio(String id) throws SQLException{
+		int cnt=0;
+		
+		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+		
+		JdbcTemplate jt=gjt.getJdbcTemplate();
+		
+		String select="select count(idx) from portfolio where id=?";
+		cnt=jt.queryForObject(select, new Object[] { id }, Integer.class);
+		
+		gjt.closeAc();
+		
+		return cnt;
+	}//cntPortfolio
+	
+
+	
+	
+	
+	
+	
+	/**
 	 * 회원이 선택한 관심분야 얻기
 	 * @param id
 	 * @return 관심분야
@@ -342,28 +369,7 @@ public class MemberDAO {
 	}//selUserInfo
 	
 	/**
-	 * 회원탈퇴시 보여주는 포트폴리오 개수
-	 * @param id
-	 * @return 포트폴리오 개수
-	 * @throws SQLException
-	 */
-	public int cntPortfolio(String id) throws SQLException{
-		int cnt=0;
-		
-		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
-		
-		JdbcTemplate jt=gjt.getJdbcTemplate();
-		
-		String select="select count(idx) from portfolio where id=?";
-		cnt=jt.queryForObject(select, new Object[] { id }, Integer.class);
-		
-		gjt.closeAc();
-		
-		return cnt;
-	}//cntPortfolio
-	
-	/**
-	 * 공지사항 최근 7개만 얻기
+	 * 공지사항 최근 몇개만 얻기
 	 * @return 
 	 * @throws SQLException
 	 */
@@ -381,7 +387,7 @@ public class MemberDAO {
 		.append("	from (select title	")
 		.append("	from notice	")
 		.append("	order by idx desc))	")
-		.append("	where r_num between 1 and 7	");
+		.append("	where r_num between 1 and 8	");
 		title=jt.query(select.toString(), new RowMapper<String>() {
 			@Override
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -392,8 +398,39 @@ public class MemberDAO {
 		gjt.closeAc();
 		
 		return title;
-	}//cntPortfolio
-
+	}//selNoticeTitle
+	
+	public List<String> selJobPostTitle() throws SQLException{
+		List<String> company=null;
+		
+		GetJdbcTemplate gjt=GetJdbcTemplate.getInstance();
+		
+		JdbcTemplate jt=gjt.getJdbcTemplate();
+		
+		StringBuilder select=new StringBuilder();
+		select
+		.append("	select company	")
+		.append("	from (select rownum r_num, company	")
+		.append("	from (select company	")
+		.append("	from job_post	")
+		.append("	order by idx desc))	")
+		.append("	where r_num between 1 and 8	");
+		company=jt.query(select.toString(), new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return rs.getString("company");
+			}
+		});
+		
+		gjt.closeAc();
+		
+		return company;
+	}//selJobPostTitle
+	
+	
+	
+	
+	
 	
 	public List<MemberVO> selectAllUser(String pw) throws SQLException{
 		List<MemberVO> list=null;
