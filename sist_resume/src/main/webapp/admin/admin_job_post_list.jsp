@@ -1,3 +1,4 @@
+<%@page import="kr.co.sist.admin.Resize"%>
 <%@page import="kr.co.sist.admin.UploadFileService"%>
 <%@page import="kr.co.sist.admin.JobpostVO"%>
 <%@page import="java.util.List"%>
@@ -84,6 +85,16 @@ pageContext.setAttribute( "fileList", ufs.searchFileList(idx) );
 				<tbody>
 					<tr>
 						<td rowspan="2" style="width: 150px">
+						
+						<c:if test="${ not empty jpData.img }">
+<%
+String img=jVO.getImg();
+Resize r=new Resize();
+r.resize(img); //입력된 이미지명에 대해 설정된 크기로 이미지를 생성한다.
+%>
+</c:if>
+						
+						
 							<div class="logo-title">
 								<div class="logo-img-div">
 									<img class="logo-img" src="http://localhost/sist_resume/upload/${jpData.img}">

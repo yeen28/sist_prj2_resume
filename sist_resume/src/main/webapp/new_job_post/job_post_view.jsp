@@ -1,3 +1,4 @@
+<%@page import="kr.co.sist.admin.Resize"%>
 <%@page import="kr.co.sist.admin.JobpostDAO"%>
 <%@page import="kr.co.sist.admin.JobpostVO"%>
 <%@page import="kr.co.sist.job_post.job_postVO"%>
@@ -43,6 +44,7 @@ job_postVO jpVO=jpDAO.selectJobpost(idx);
 JobpostVO jVO=new JobpostDAO().selectAllJobpost_list(idx);
 	//scope객체 사용
 	pageContext.setAttribute("jpData", jVO);
+	pageContext.setAttribute("jpVO", jpVO);
 %>
 <!-- header -->
 	<jsp:include page="/headerfooter/header.jsp"></jsp:include>
@@ -64,7 +66,7 @@ JobpostVO jVO=new JobpostDAO().selectAllJobpost_list(idx);
 				<th colspan="3" style="width: 150px">
 				<div class="logo-title">
 								<div class="logo-img-div">
-									<img class="logo-img" src="http://localhost/sist_resume/upload/<%= jpVO.getImg() %>">
+									<img class="logo-img" src="http://localhost/sist_resume/upload/<%= jpVO.getImg() %>" width="100px;">
 								</div>
 							</div>
 			</tr>
