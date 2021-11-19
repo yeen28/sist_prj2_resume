@@ -36,7 +36,7 @@ $(function () {
 	<c:catch var="e">
 		<%
 		request.setCharacterEncoding("UTF-8");
-		File uploadPath=new File("D:/dev/workspace/sist_resume/src/main/webapp/upload_file"); //파일 저장 경로
+		File uploadPath=new File("C:/Users/user/git/sist_prj2_resume/sist_resume/src/main/webapp/upload");
 		if(!uploadPath.exists()) {
 			uploadPath.mkdirs();
 		}//end if
@@ -53,8 +53,8 @@ $(function () {
 	 	String description = mr.getParameter("description");
 	 	String homepage = mr.getParameter("homepage");
 	 //이미지 파일
-	 	String OriginName = mr.getOriginalFileName("img");
-	 	String fileSystemName = mr.getFilesystemName("img"); //얜 어쩌지 ,,,
+	 	String OriginName = mr.getOriginalFileName("img"); // 원본파일명
+	 	String fileSystemName = mr.getFilesystemName("img"); // 변경된 파일명
 	 //session에 있는 id 값을 받아온다.
 		String id = (String)session.getAttribute("sess_id");
 	 //2. 입력폼의 값을 VO를 생성하고 VO에 넣는다.
@@ -73,20 +73,19 @@ $(function () {
 		jVO.setDescription(description);
 		
 		jVO.setHomepage(homepage);
-		jVO.setId("hj");
 	 //3. 값을 가진 VO를 insert할 method에 넣어 insert작업을 수행한다.
 		JobpostDAO jd = new JobpostDAO();
 		int cnt = jd.insertJobpost(jVO); 
 	 //4. insert작업후 view페이지로 이동한다.  
 
 		%>
-	</c:catch>
 		<div style="font-size: 40px; font-weight: bold; width: 1000px; margin: auto; margin-top: 200px; text-align: center;">
 			채용공고가 등록되었습니다.
 		</div>
 		<div class="sub_btn">
 			<input type="button" id="btn" class="btn btn-lg" value="채용공고 홈가기">
 		</div>
+	</c:catch>
 		<c:if test="${not empty e }">
 			죄송합니다. 채용공고 등록 중 에러가 발생했습니다. 다시 한번 시도해주시길 바랍니다.
 			<c:out value="${e }"/>

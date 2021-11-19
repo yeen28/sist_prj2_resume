@@ -61,7 +61,12 @@ JobpostVO jVO=new JobpostDAO().selectAllJobpost_list(idx);
 		<table class="table">
 			<tbody>
 			<tr>
-				<th colspan="3" style="width: 150px"><%= jpVO.getImg() %></th>
+				<th colspan="3" style="width: 150px">
+				<div class="logo-title">
+								<div class="logo-img-div">
+									<img class="logo-img" src="http://localhost/sist_resume/upload/<%= jpVO.getImg() %>">
+								</div>
+							</div>
 			</tr>
 			<tr>
 				<th style="width: 150px; font-size: 17px; font-weight: bold; color: #333">회사명</th>

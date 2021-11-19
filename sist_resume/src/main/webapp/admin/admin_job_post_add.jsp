@@ -104,6 +104,7 @@ $(function () {
 				<td>이미지</td>
 				<td>
 					<input type="file" id="img" name="img" />
+					<label>파일선택</label>
 				</td>
 			</tr>
 			<tr>

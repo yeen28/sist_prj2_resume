@@ -1,3 +1,4 @@
+<%@page import="kr.co.sist.admin.UploadFileService"%>
 <%@page import="kr.co.sist.admin.JobpostVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.sist.admin.JobpostDAO"%>
@@ -64,6 +65,15 @@ $(function () {
  	pageContext.setAttribute("jpData", jVO);
  	
 	%> 
+	
+	
+	<%
+UploadFileService ufs=new UploadFileService();
+pageContext.setAttribute( "fileList", ufs.searchFileList(idx) );
+%>
+	
+	
+	
 <div class="center">
 	<div id="container">
 		<div style="margin: 0px auto; width: 900px;text-align: left; margin-bottom: 80px">
@@ -76,7 +86,7 @@ $(function () {
 						<td rowspan="2" style="width: 150px">
 							<div class="logo-title">
 								<div class="logo-img-div">
-									<img class="logo-img" src="http://localhost/sist_resume/upload_file/${jpData.img}">
+									<img class="logo-img" src="http://localhost/sist_resume/upload/${jpData.img}">
 								</div>
 							</div>
 						</td>
