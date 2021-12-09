@@ -63,8 +63,7 @@ public class ProfileDAO {
 
 		return pv;
 	}// updateProfile
-
-
+	
 	public List<TechVO> selectTech() throws DataAccessException {
 
 		List<TechVO> list = null;

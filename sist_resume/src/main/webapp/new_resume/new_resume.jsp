@@ -216,7 +216,7 @@ $(function() {
 							<strong>${ pVO.description }</strong>
 						</div>
 						<div class="edit_prof">
-							<a href="http://localhost/sist_resume/profile/profile.jsp">내 프로필 수정</a>
+							<a href="http://localhost/sist_resume/new_profile/new_profile.jsp">내 프로필 수정</a>
 						</div>
 					</div>
 				</div>

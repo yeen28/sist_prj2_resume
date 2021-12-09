@@ -7,7 +7,7 @@
 
 .profile_body {
 	border: 1px solid #333;
-	background-color: #FAF4C0;
+	background-color: white;
 	margin-top: 70px;
 	margin-left: 100px;
 	margin-right: 100px;
@@ -15,11 +15,10 @@
 }
 
 .frm_body {
-	margin: 50px;
+	margin: 20px;
 }
 
 .prof_img {
-	background-color: white;
 	width: 200px;
 	height: 200px;
 }
@@ -32,4 +31,15 @@
 .prof_ele {
 	margin-top: 20px;
 	margin-bottom: 10px;
+}
+
+.img_frm {
+	background-color: #FAF4C0;
+	padding: 20px;
+	margin-bottom: 50px;
+}
+
+.prof_frm {
+	background-color: #FAF4C0;
+	padding: 20px;
 }

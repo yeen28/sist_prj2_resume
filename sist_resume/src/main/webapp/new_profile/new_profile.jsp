@@ -47,7 +47,6 @@ try {
 	pageContext.setAttribute("iVO", iVO);
 	pageContext.setAttribute("pVO", pVO);
 	pageContext.setAttribute("tList", tList);
-
 %>
 <script type="text/javascript">
 $(function() {
@@ -62,7 +61,7 @@ $(function() {
 		// 업로드 하지 못하도록 막아야 한다.
 		// 이미지 파일만 업로드 할 수 있도록 검증.
 		// jpg, png, gif, bmp
-		let blockExt = ["jpg", "png", "gif", "bmp"];
+		let blockExt = ["jpg", "png", "gif", "bmp", ""];
 		let blockFlag = false;
 		
 		let ext = (img.substring(img.lastIndexOf(".") + 1)).toLowerCase();
@@ -82,6 +81,10 @@ $(function() {
 		
 		$("#img_frm").submit();
 	});
+	
+	$("#del_img").click(function() {
+		$("#img").val("");
+	});
 });
 
 </script>
@@ -97,19 +100,27 @@ $(function() {
 		<div class="profile_body">
 			<div class="frm_body">
 				
-				<form action="upload_process.jsp" id="img_frm" method="post" enctype="multipart/form-data">
-					<div class="prof_img prof_ele">
-						<img src="http://localhost/sist_resume/new_profile/upload/${ pVO.img }" width="200px;">
+				<form action="upload_process.jsp" id="img_frm" method="post" enctype="multipart/form-data" class="img_frm">
+					<div class="prof_img prof_ele" id="prof_img_view">
+						<c:choose>
+							<c:when test="${ pVO.img eq 'null' or empty pVO.img}">
+								<img src="http://localhost/sist_resume/common/images/defalt.jpg" width="200px;">
+							</c:when>
+							<c:otherwise>
+								<img src="http://localhost/sist_resume/new_profile/upload/${ pVO.img }" width="200px;">
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="form-group prof_ele">
 						<label for="img">프로필 사진</label>
-						<input type="file" name="img2" id="img"><br>
+						<input type="file" name="img2" id="img">
+						<input type="button" value="이미지 초기화" id="del_img">
 						<input type="button" value="업로드" id="img_btn">
 						<p class="help-block">프로필 사진은 .jpg, .png .gif, .bmp 파일만 가능하고, 최대 파일 크기는 10MB 입니다.</p>
 					</div>
 				</form>
 				
-				<form id="prof_frm" action="http://localhost/sist_resume/new_profile/profile_process.jsp" method="post">
+				<form id="prof_frm" class="prof_frm" action="http://localhost/sist_resume/new_profile/profile_process.jsp" method="post">
 				<input type="hidden" name="img" id="hid_img" value="<%=request.getParameter("img")%>">
 				<div class="row prof_ele">
 					<div class="form-group col-xs-4" >

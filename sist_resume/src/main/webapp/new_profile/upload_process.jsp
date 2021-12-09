@@ -25,7 +25,8 @@
 <script type="text/javascript">
 <%
 // 1. 파일 업로드 컴포넌트 생성. (파일이 업로드 된다.)
-File uploadPath = new File("C:/Users/user/git/sist_prj2_resume/sist_resume/src/main/webapp/new_profile/upload");
+/* File uploadPath = new File("http://localhost/sist_resume/src/main/webapp/new_profile/upload"); */
+File uploadPath = new File("C:/Users/user/git/sist_resume/sist_resume/src/main/webapp/new_profile/upload");
 if(!uploadPath.exists()) { // 업로드 폴더가 존재하지 않으면
 	uploadPath.mkdirs();
 }
