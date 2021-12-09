@@ -30,7 +30,7 @@
                         <span>평일 09:00 - 18:00</span>
                     </span>
                     <div class="btn-wrap">
-                        <a href="javascript:history.back()" class="btn btn-md btn-primary">이전으로 이동</a>
+                        <a href="http://localhost/sist_resume/index.jsp" class="btn btn-md btn-primary">메인으로 이동</a>
                     </div>
                 </div>
             </div>

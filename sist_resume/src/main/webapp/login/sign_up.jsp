@@ -128,7 +128,7 @@ $(function() {
       <div id="agree">
           <h6>
             <input type="checkbox" id="tos_agreed" name="tos_agreed" value="tos_agreed">
-            <a target="_blank" rel="noopener" href="<%= protocol %><%= domain %><%= contextRoot %><%= login %>/tos.jsp">이용약관</a>에 동의합니다. (필수)
+            <a target="_blank" rel="noopener" href="http://localhost/sist_resume/login/tos.jsp">이용약관</a>에 동의합니다. (필수)
           </h6>
       </div>
       
