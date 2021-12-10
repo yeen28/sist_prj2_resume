@@ -25,7 +25,6 @@
 
 .contents {
 	margin: 30px;
-	height: 300px;
 	background: rgb(255,255,255);
 	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 100%);
 	text-align: center;
@@ -57,11 +56,24 @@
 	padding: 10px;
 }
 
-.no1 {
+.tab_subtitle {
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
-.content_wrap {
+.company_tab {
+	background-color: #FFFFFF;
 }
+
+.comp_logo {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.content_title {
+	margin-top: 125px;
+}
+
 </style>
 <!--jQuery CDN-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -189,24 +201,105 @@
 				<div class="content_wrap">
 					<div class="row">
 						<div class="col-md-6">
-							<h2>이력서를 작성해보세요</h2>
+							<div class="content_title">
+								<h2><strong>이력서를 작성해보세요</strong></h2>
+							</div>
 						</div>
 						<div class="col-md-6">
-							사진
+							<img src="http://localhost/sist_resume/common/images/resume_pic.png" width="500px">
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="contents no1">
+			<div class="contents no2">
 				<div class="content_wrap">
 					<div class="row">
 						<div class="col-md-6">
-							사진
+							<img src="http://localhost/sist_resume/common/images/popol.png" width="500px">
 						</div>
 						<div class="col-md-6">
-							<h2>포트폴리오를 작성해보세요</h2>
+							<div class="content_title">
+								<h2><strong>포트폴리오를 작성해보세요</strong></h2>
+							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="contents no3">
+				<div class="content_wrap">
+					<div class="tab_subtitle">
+						<h2><strong>국내외 많은 기업이 당신을 기다립니다.</strong></h2>
+					</div>
+					<table class="table table-bordered company_tab">
+						<tr>
+							<td>
+								<div class="comp_logo"><img alt="kakao" src="http://localhost/sist_resume/common/images/comp_logo/kakao.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="line" src="http://localhost/sist_resume/common/images/comp_logo/line.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="naver" src="http://localhost/sist_resume/common/images/comp_logo/naver.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="lguplus" src="http://localhost/sist_resume/common/images/comp_logo/lguplus.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="11st" src="http://localhost/sist_resume/common/images/comp_logo/11st.png" width="190px"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="comp_logo"><img alt="deliveryhero" src="http://localhost/sist_resume/common/images/comp_logo/deliveryhero.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="kakaocommerce" src="http://localhost/sist_resume/common/images/comp_logo/kakaocommerce.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="kakaoenterprise" src="http://localhost/sist_resume/common/images/comp_logo/kakaoenterprise.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="woowahan" src="http://localhost/sist_resume/common/images/comp_logo/woowahan.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="netmarble" src="http://localhost/sist_resume/common/images/comp_logo/netmarble.png" width="190px"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="comp_logo"><img alt="carrotmarket" src="http://localhost/sist_resume/common/images/comp_logo/carrotmarket.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="watcha" src="http://localhost/sist_resume/common/images/comp_logo/watcha.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="socar" src="http://localhost/sist_resume/common/images/comp_logo/socar.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="vcnc" src="http://localhost/sist_resume/common/images/comp_logo/vcnc.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="estsoft" src="http://localhost/sist_resume/common/images/comp_logo/estsoft.png" width="190px"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="comp_logo"><img alt="krafton" src="http://localhost/sist_resume/common/images/comp_logo/krafton.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="dramacompany" src="http://localhost/sist_resume/common/images/comp_logo/dramacompany.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="zigbang" src="http://localhost/sist_resume/common/images/comp_logo/zigbang.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="myrealtrip" src="http://localhost/sist_resume/common/images/comp_logo/myrealtrip.png" width="190px"></div>
+							</td>
+							<td>
+								<div class="comp_logo"><img alt="dreamus" src="http://localhost/sist_resume/common/images/comp_logo/dreamus.png" width="190px"></div>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
